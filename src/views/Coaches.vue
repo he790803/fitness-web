@@ -18,11 +18,14 @@
         </li>
       </ul>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Footer from '../components/Footer.vue';
 export default {
+  components: { Footer },
   name: 'Teachers',
   data() {
     return {
@@ -138,5 +141,55 @@ export default {
   width: 50%;
   padding: 1rem;
   font-size: 1.5rem;
+}
+@media screen and (max-width: 1600px) {
+  .text {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    height: 100%;
+    /* height: calc(100vh - 160px); */
+  }
+  .text {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3rem;
+    align-items: center;
+  }
+  .text h1::after {
+    content: '、';
+  }
+  .text h1:last-child::after {
+    content: '';
+  }
+  .coaches {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .coaches li:first-child {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+  }
+  .coaches li {
+    width: 100%;
+    min-height: 100vh;
+    margin: 1rem;
+    border-radius: 0px;
+  }
+  .coaches li:hover {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .coaches li .content {
+    height: 300px;
+    border-radius: 0px;
+  }
 }
 </style>

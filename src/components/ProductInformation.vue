@@ -204,4 +204,14 @@ export default {
 .precautions p {
   padding: 1rem;
 }
+@media screen and (max-width: 830px) {
+  .product-group {
+    flex-direction: column;
+  }
+  .product-img,
+  .product-txt {
+    width: 100%;
+    padding: 2%;
+  }
+}
 </style>

@@ -6,7 +6,15 @@
         <p>Fitness</p>
       </router-link>
     </div>
-    <nav>
+    <div class="flip-icon" :class="{ active: isActive }">
+      <div class="flip-icon-font">
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa-bars" @click="isActive = !isActive" />
+      </div>
+      <div class="flip-icon-back">
+        <font-awesome-icon class="fa-xmark" icon="fa-solid fa-xmark" @click="isActive = !isActive" />
+      </div>
+    </div>
+    <nav :class="{ active: isActive }">
       <ul>
         <li v-for="(item, index) of navList" :key="index" @click="selectedHandler(index)">
           <router-link :to="item.link" :class="{ highlight: item.title === page }">
@@ -46,6 +54,7 @@ export default {
       highligh: false,
       page: '',
       aaa: '',
+      isActive: false,
       navList: [
         {
           title: 'HOME',
@@ -88,6 +97,7 @@ export default {
     },
     selectedHandler(index) {
       this.selected = index;
+      this.isActive = false;
     },
   },
   watch: {
@@ -111,6 +121,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.flip-icon {
+  position: relative;
+  top: -2.5rem;
+  left: -2rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transition: 0.5s transform linear;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.flip-icon-font,
+.flip-icon-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-icon.active {
+  transform: rotateX(180deg);
+  // overflow: hidden;
+}
+.flip-icon-back {
+  transform: rotateX(180deg);
+}
 .navBar2 {
   background-color: #dac9a6;
   // background-color: #81c7d4;
@@ -124,7 +162,8 @@ export default {
   align-items: center;
   padding: 2rem;
   height: 120px;
-  // background: #fae;
+  background-color: #dac9a6;
+  background-image: url('../assets/imgs/texture.png');
 }
 .logo p {
   padding: 0.3rem 0 0 1.6rem;
@@ -144,10 +183,20 @@ export default {
   padding: 0;
   text-align: center;
 }
+.fa-bars,
+.fa-xmark {
+  font-size: 2.3rem;
+  color: #fff;
+  position: absolute;
+  top: -4rem;
+  left: 3rem;
+  cursor: pointer;
+  display: none;
+}
 nav {
   max-width: 1000px;
   margin: auto;
-  height: 40px;
+  // height: 40px;
   // display: flex;
   // justify-content: space-between;
 }
@@ -236,12 +285,15 @@ nav ul li a {
 }
 .shop-car a {
   position: absolute;
-  top: 2rem;
-  right: 3rem;
+  // position: relative;
+  top: 1rem;
+  // left: 2.5rem;
+  right: 1rem;
   // color: #aaa;
   color: #515151;
   font-size: 1.5rem;
   line-height: 40px;
+  z-index: 30;
 }
 .shop-car span {
   position: absolute;
@@ -260,5 +312,35 @@ nav ul li a {
 .highlight {
   // color: rgb(120, 220, 188);
   color: #515151;
+}
+@media screen and (max-width: 830px) {
+  .flip-icon {
+    z-index: 30;
+  }
+  .fa-bars,
+  .fa-xmark {
+    display: inherit;
+    z-index: 30;
+  }
+  .logo {
+    z-index: 28;
+  }
+  nav ul {
+    flex-direction: column;
+    background-color: #dac9a6;
+    opacity: 0;
+    z-index: 10;
+    top: -100px;
+    position: absolute;
+    width: 100%;
+    transition: 0.5s top linear, 0.5s opacity linear, 0.5s z-index linear;
+  }
+  nav.active ul {
+    top: 120px;
+    opacity: 1;
+    z-index: 25;
+    background-color: #dac9a6;
+    background-image: url('../assets/imgs/texture.png');
+  }
 }
 </style>

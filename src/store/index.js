@@ -78,12 +78,13 @@ export default new Vuex.Store({
     shoppingList: [],
     step2: false,
   },
+  // mutations更新state
   mutations: {
     SET_SHOPPING_CART_ITEM(state, shoppingItems) {
       state.shoppingCart = shoppingItems;
     },
     SET_SHOPPING_LIST(state, shopping) {
-      console.log(shopping);
+      console.log('SHOPPING_LIST:' + shopping);
       state.shoppingList = shopping;
     },
     COMPLETE(state) {
@@ -108,6 +109,7 @@ export default new Vuex.Store({
       // 1. GET (串API撈資料)
       const shoppingItems = STORE.load();
       // 2. commit mutation
+
       commit('SET_SHOPPING_CART_ITEM', shoppingItems);
       // 3. return
       return { shoppingItems };
@@ -131,9 +133,10 @@ export default new Vuex.Store({
         totalPrice,
       };
     },
-    READ_LIST({ commit }) {
+    READ_LIST({ state, commit }) {
       // 1. GET (串API撈資料)
-      const shoppingItems = SHOPPING.load();
+      // const shoppingItems = SHOPPING.load();
+      const shoppingItems = state.shoppingList;
       // 2. commit mutation
       commit('SET_SHOPPING_LIST', shoppingItems);
       // 3. return
@@ -146,7 +149,7 @@ export default new Vuex.Store({
       // shopping.push(item);
 
       // SHOPPING.save(item);
-      console.log(123);
+      console.log('UPDATE_SHOPPING_CART:' + item);
       commit('SET_SHOPPING_LIST', item);
     },
     REMOVE_SHOPPING_CART_ITEM({ commit }, item) {
@@ -167,7 +170,7 @@ export default new Vuex.Store({
       STORE.save(shoppingItems);
       commit('PRODUCT_NUM_CONTROL', [item, num]);
     },
-    AAA({ state, commit }) {
+    COMPLETE_LIST({ state, commit }) {
       let list = SHOPPING.load();
       let item = state.shoppingList;
       list.push(item);

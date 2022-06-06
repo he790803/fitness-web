@@ -106,4 +106,9 @@ export default {
   color: #fff;
   font-weight: 600;
 }
+@media screen and (max-width: 830px) {
+  .video-background video {
+    height: calc(100vh - 120px);
+  }
+}
 </style>

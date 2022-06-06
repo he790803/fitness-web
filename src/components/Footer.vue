@@ -28,7 +28,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 830px) {
   .footer-text {
     flex-direction: column;
   }

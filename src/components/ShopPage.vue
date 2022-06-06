@@ -109,7 +109,7 @@ export default {
     },
     imgListA(n) {
       return {
-        backgroundImage: `url(${require('../assets/imgs/about-' + n + '.jpg')})`,
+        backgroundImage: `url(${require('../assets/imgs/shop-banner-' + n + '.jpeg')})`,
         animationDuration: `${this.animationDuration}s`,
         // animationDelay: `${((n - 1) * this.animationDuration) / 2}s`,
       };
@@ -163,10 +163,10 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.5s;
+  transition: width 0.5s, height 0.5s;
 }
 .scroll .banner-img-list {
-  width: 1200px;
+  width: 1400px;
   height: 300px;
 }
 .banner-img-list > li {
@@ -174,9 +174,10 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  // background-size: cover;
+  background-size: 120% auto;
 }
 .banner-img-list > li.animated {
   animation-name: imgAnimate;
@@ -348,9 +349,59 @@ export default {
     background-size: 100% auto;
   }
 }
+@keyframes imgAnimate2 {
+  0% {
+    opacity: 0;
+    background-size: auto 120%;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+    background-size: auto 100%;
+  }
+}
+@media screen and (orientation: portrait) {
+  .banner-img-list > li {
+    background-size: auto 120%;
+  }
+  .banner-img-list > li.animated {
+    animation-name: imgAnimate2;
+    animation-timing-function: linear;
+    // animation-iteration-count: infinite;
+  }
+  .scroll .banner-img-list {
+    width: 100%;
+    height: 300px;
+  }
+}
+@media screen and (orientation: landscape) {
+  .banner-lg-content.active {
+    color: white;
+  }
+  .banner-img-list > li {
+    background-size: 120% auto;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .banner {
+    height: calc(100vh - 120px);
+  }
+}
 @media screen and(max-width:590px) {
   .course-list {
     justify-content: flex-start;
+  }
+  .banner-sm-content.active {
+    font-size: 2rem;
   }
 }
 </style>

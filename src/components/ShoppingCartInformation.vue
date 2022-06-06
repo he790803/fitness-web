@@ -101,9 +101,9 @@
         <label for="pay-method">付款方式</label>
         <select name="付款方式" id="pay-method" v-model="customer.payMethod">
           <option disabled="disabled" selected="selected" value="">請選擇購買方式</option>
-          <option value="ATM">ATM</option>
-          <option value="Credit">信用卡</option>
-          <option value="Cash">貨到付款</option>
+          <option :value="ATM">ATM</option>
+          <option :value="Credit">信用卡</option>
+          <option :value="Cash">貨到付款</option>
         </select>
         <span v-if="errors.payMethodError">{{ payMethodErrorMessage }}</span>
       </div>
@@ -144,6 +144,9 @@ export default {
       isDiscount: null,
       couponUse: [],
       couponCode: '',
+      ATM: 'ATM',
+      Credit: '信用卡',
+      Cash: '貨到付款',
       coupons: [
         { code: 'VIP666', discount: 0.6, name: '6折優惠券', isUse: false },
         { code: 'VIP888', discount: 0.8, name: '8折優惠券', isUse: false },
@@ -526,6 +529,7 @@ export default {
 button.disabled {
   background: #aaa;
 }
+
 @media screen and (max-width: 830px) {
   .description {
     padding: 0.3rem;

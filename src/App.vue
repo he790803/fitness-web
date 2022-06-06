@@ -79,7 +79,7 @@ export default {
   watch: {
     load() {
       // Our fancy notification (2).
-      console.log(`888`);
+      console.log(`loading`);
     },
     $route() {
       this.$store.commit('LOADING', true);

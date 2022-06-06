@@ -15,6 +15,11 @@
 <script>
 export default {
   name: 'shoppingCartInformation',
+  mounted() {
+    setTimeout(() => {
+      this.$store.commit('LOADING', false);
+    }, 1500);
+  },
 };
 </script>
 

@@ -30,7 +30,7 @@
     </div>
     <div class="about-information">
       <div class="row-1">
-        <div class="row-1-img">
+        <div class="row-1-img" ref="img1">
           <img src="@/assets/imgs/about-3.jpg" alt="" />
         </div>
         <div class="row-1-text row-text">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="row-2">
-        <div class="row-2-img">
+        <div class="row-2-img" ref="img2">
           <img src="@/assets/imgs/about-3.jpg" alt="" />
         </div>
         <div class="row-2-text row-text">
@@ -85,13 +85,22 @@ export default {
   },
   methods: {
     handleScroll() {
-      if (window.scrollY >= 700) {
+      // if (window.scrollY >= 700) {
+      //   gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
+      // }
+      // if (window.scrollY >= 1030) {
+      //   gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
+      // }
+      if (window.pageYOffset + this.$refs.img1.clientHeight >= this.$refs.img1.offsetTop) {
         gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
       }
-      if (window.scrollY >= 1030) {
+      if (window.pageYOffset + this.$refs.img2.clientHeight >= this.$refs.img2.offsetTop) {
         gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       }
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
+      console.log(`IMG:${this.$refs.img2.offsetTop}`);
+      console.log(`WINDOW:${window.pageYOffset}`);
+      console.log(`${this.$refs.img2.clientHeight}`);
     },
   },
   computed: {
@@ -136,8 +145,8 @@ export default {
   content: '';
   /* background: #fff; */
   position: absolute;
-  top: -100px;
-  left: -100px;
+  top: -10rem;
+  left: -10rem;
 }
 .text.action::before {
   width: 80px;
@@ -146,16 +155,16 @@ export default {
   border-left: 5px solid #ca293e;
   transition: 0.5s all linear;
   position: absolute;
-  top: -20px;
-  left: -20px;
+  top: -1rem;
+  left: -1rem;
 }
 
 .text::after {
   content: '';
   /* background: #fff; */
   position: absolute;
-  top: 210px;
-  left: 600px;
+  top: 30rem;
+  left: 50rem;
 }
 .text.action::after {
   width: 80px;
@@ -164,8 +173,8 @@ export default {
   border-right: 5px solid #ca293e;
   transition: 0.5s all linear;
   position: absolute;
-  top: 130px;
-  left: 450px;
+  top: 8rem;
+  left: 28rem;
 }
 
 .text p {
@@ -290,5 +299,64 @@ export default {
   padding: 1rem;
   color: #fff;
   margin-right: 1%;
+}
+@media screen and (max-width: 1000px) {
+  .about-txt p {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 830px) {
+  .text > h1 {
+    font-size: 2.2rem;
+  }
+  .text::after {
+    top: 6.5rem;
+    left: -17rem;
+  }
+  .text.action::after {
+    top: 6.5rem;
+    left: 17rem;
+  }
+  .about-us {
+    flex-direction: column;
+  }
+  .about-img,
+  .about-txt {
+    width: 100%;
+  }
+  .about-txt p {
+    font-size: 1.2rem;
+  }
+  .row-1,
+  .row-2,
+  .row-3 {
+    height: 100%;
+    flex-wrap: wrap;
+  }
+  .row-1-img,
+  .row-1-text,
+  .row-2-img,
+  .row-2-text,
+  .row-3-img,
+  .row-3-text {
+    width: 100%;
+    margin: 0;
+  }
+  .row-2-img:last-child {
+    display: none;
+  }
+  .row-3-text {
+    order: 2;
+  }
+
+  @media screen and (max-width: 409px) {
+    .text > h1 {
+      font-size: 1.5rem;
+    }
+    .text.action::before,
+    .text.action::after {
+      display: none;
+    }
+  }
 }
 </style>

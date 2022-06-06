@@ -95,8 +95,7 @@ export default {
   },
   methods: {
     complete() {
-      this.$store.dispatch('AAA');
-      console.log('AAA');
+      this.$store.dispatch('COMPLETE_LIST');
     },
   },
   computed: {
