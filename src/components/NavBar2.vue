@@ -5,6 +5,25 @@
         <p>Push Yourself</p>
         <p>Fitness</p>
       </router-link>
+      <nav :class="{ active: isActive }">
+        <ul>
+          <li v-for="(item, index) of navList" :key="index" @click="selectedHandler(index)">
+            <router-link :to="item.link" :class="{ highlight: item.title === page }">
+              <font-awesome-icon :icon="item.icon" />
+              {{ item.title }}
+            </router-link>
+          </li>
+          <li class="vol" @click="musicControl" :class="{ play: !play }">
+            <div class="sound-btn"></div>
+            <!-- <font-awesome-icon icon="fa-solid fa-volume-high" /> -->
+            <p>
+              sound
+              <span v-if="play">off</span>
+              <span v-else>on</span>
+            </p>
+          </li>
+        </ul>
+      </nav>
     </div>
     <div class="flip-icon" :class="{ active: isActive }">
       <div class="flip-icon-font">
@@ -14,7 +33,7 @@
         <font-awesome-icon class="fa-xmark" icon="fa-solid fa-xmark" @click="isActive = !isActive" />
       </div>
     </div>
-    <nav :class="{ active: isActive }">
+    <!-- <nav :class="{ active: isActive }">
       <ul>
         <li v-for="(item, index) of navList" :key="index" @click="selectedHandler(index)">
           <router-link :to="item.link" :class="{ highlight: item.title === page }">
@@ -24,7 +43,7 @@
         </li>
         <li class="vol" @click="musicControl" :class="{ play: !play }">
           <div class="sound-btn"></div>
-          <!-- <font-awesome-icon icon="fa-solid fa-volume-high" /> -->
+       
           <p>
             sound
             <span v-if="play">off</span>
@@ -32,7 +51,7 @@
           </p>
         </li>
       </ul>
-    </nav>
+    </nav> -->
     <div class="shop-car" @click="selectedHandler(0)">
       <router-link to="/shopping-cart">
         <font-awesome-icon icon="fa-solid fa-shopping-cart" />
@@ -166,19 +185,20 @@ export default {
 .logo {
   position: relative;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  // align-items: center;
+  // padding: 2rem;
+  padding: 1rem 2rem;
   height: 120px;
   background-color: #dac9a6;
   background-image: url('../assets/imgs/texture.png');
 }
 .logo p {
-  padding: 0.3rem 0 0 1.6rem;
+  // padding: 0.3rem 0 0 1.6rem;
   font-size: 1.8rem;
   font-family: anton;
-  letter-spacing: 18px;
+  letter-spacing: 5px;
   // color: rgba(0, 0, 0, 0.79);
   color: #eee;
 }
@@ -190,7 +210,7 @@ export default {
   font-size: 2rem;
   letter-spacing: normal;
   padding: 0;
-  text-align: center;
+  // text-align: center;
 }
 .fa-bars,
 .fa-xmark {
@@ -204,6 +224,7 @@ export default {
 }
 nav {
   max-width: 1000px;
+
   margin: auto;
   // height: 40px;
   // display: flex;
@@ -213,6 +234,8 @@ nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  width: 1000px;
 }
 
 .vol {
@@ -222,9 +245,10 @@ nav ul {
   align-items: center;
 }
 .vol p {
-  width: 120px;
+  width: 230px;
   text-align: center;
-  font-size: 1.3rem;
+  // font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #515151;
 }
@@ -269,6 +293,7 @@ nav ul {
   height: 20px;
   width: 20px;
   left: 5px;
+  // bottom: 10px;
   bottom: 10px;
   background-color: #fff;
   transition: 0.4s;
@@ -323,6 +348,9 @@ nav ul li a {
   color: #515151;
 }
 @media screen and (max-width: 830px) {
+  .logo {
+    align-items: center;
+  }
   .flip-icon {
     z-index: 30;
   }

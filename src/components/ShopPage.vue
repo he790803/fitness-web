@@ -8,6 +8,7 @@
             :key="index"
             :style="imgListA(image)"
             :class="{ animated: image - 1 === active || image - 1 === preActive }"
+            ref="imgListC"
           ></li>
         </ul>
         <p class="banner-lg-content" :class="{ active: isShow }">Sports in Your Life</p>
@@ -73,15 +74,6 @@ export default {
       active: 0,
       preActive: 0,
       isShow: true,
-      aaa: require('../assets/imgs/about-1.jpg'),
-      imgList: [
-        {
-          backgroundImage: `url(${require('../assets/imgs/about-1.jpg')})`,
-          animationDuration: `${10}s`,
-          animationDelay: `$`,
-        },
-        { backgroundImage: `url(${require('../assets/imgs/about-4.jpg')})`, objectFit: 'cover' },
-      ],
     };
   },
   created() {
@@ -90,15 +82,30 @@ export default {
 
   mounted() {
     document.body.style.overflow = 'hidden';
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   this.$store.commit('LOADING', false);
+    //   document.body.style.overflow = 'visible';
+    // }, 1500);
+    if (this.$refs.imgListC[0].style.backgroundImage) {
       this.$store.commit('LOADING', false);
       document.body.style.overflow = 'visible';
-    }, 1500);
+    }
+    console.log(this.$refs.imgListC[0].style.backgroundImage);
     setInterval(() => {
       this.preActive = this.active;
       this.active = (this.active + 1 + this.total) % this.total;
     }, 5000);
   },
+  // watch: {
+  //   imgListA: {
+  //     handler: function () {
+  //       if (this.$refs.imgListC[0].style.backgroundImage) {
+  //         this.$store.commit('LOADING', false);
+  //         document.body.style.overflow = 'visible';
+  //       }
+  //     },
+  //   },
+  // },
   methods: {
     handleScroll() {
       this.isScroll = window.scrollY > 0 ? true : false;

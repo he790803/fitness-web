@@ -43,7 +43,6 @@ export default {
     imgRight.src = require('@/assets/imgs/homevideo-1.mp4');
     imgRight.onloadstart = () => {
       // 图片加载成功后把地址给原来的img
-      console.log(221);
       // this.$refs.imgRight.src = imgRight.src;
       this.$store.commit('LOADING', false);
     };
@@ -67,7 +66,8 @@ export default {
 }
 .video-background video {
   width: 100vw;
-  height: calc(100vh - 160px);
+  // 原本160px
+  height: calc(100vh - 120px);
   object-fit: cover;
   vertical-align: middle;
 }
