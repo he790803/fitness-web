@@ -163,6 +163,7 @@ export default {
   cursor: pointer;
   border: 1px solid #ccc;
   outline-color: #c39173;
+  color: #000;
 }
 .product-num select option {
   border: 1px solid #e2eded;
