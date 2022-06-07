@@ -146,6 +146,8 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
+  transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
