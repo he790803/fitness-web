@@ -150,6 +150,8 @@ export default {
   -webkit-transform: rotateX(0deg);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-perspective: 0;
+  perspective: 0;
 }
 .flip-icon.active {
   transform: rotateX(180deg);
