@@ -1,10 +1,13 @@
 <template>
   <div class="navBar2">
     <div class="logo" @click="selected = null">
-      <router-link to="/">
-        <p>Push Yourself</p>
-        <p>Fitness</p>
-      </router-link>
+      <div class="home-link">
+        <router-link to="/">
+          <p>Push Yourself</p>
+          <p>Fitness</p>
+        </router-link>
+      </div>
+
       <nav :class="{ active: isActive }">
         <ul>
           <li v-for="(item, index) of navList" :key="index" @click="selectedHandler(index)">
@@ -194,6 +197,9 @@ export default {
   background-color: #dac9a6;
   background-image: url('../assets/imgs/texture.png');
 }
+.logo > .home-link {
+  width: 20%;
+}
 .logo p {
   // padding: 0.3rem 0 0 1.6rem;
   font-size: 1.8rem;
@@ -223,8 +229,8 @@ export default {
   display: none;
 }
 nav {
-  max-width: 1000px;
-
+  // max-width: 1000px;
+  width: 80%;
   margin: auto;
   // height: 40px;
   // display: flex;
@@ -235,7 +241,7 @@ nav ul {
   justify-content: space-around;
   align-items: center;
 
-  width: 1000px;
+  // min-width: 800px;
 }
 
 .vol {
@@ -245,7 +251,7 @@ nav ul {
   align-items: center;
 }
 .vol p {
-  width: 230px;
+  width: 145px;
   text-align: center;
   // font-size: 1.3rem;
   font-size: 1rem;
@@ -347,9 +353,16 @@ nav ul li a {
   // color: rgb(120, 220, 188);
   color: #515151;
 }
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 960px) {
   .logo {
-    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    // align-items: center;
+    z-index: 28;
+    width: 100%;
+  }
+  .logo .home-link {
+    width: 100%;
   }
   .flip-icon {
     z-index: 30;
@@ -359,15 +372,13 @@ nav ul li a {
     display: inherit;
     z-index: 30;
   }
-  .logo {
-    z-index: 28;
-  }
   nav ul {
     flex-direction: column;
     background-color: #dac9a6;
     opacity: 0;
     z-index: 10;
-    top: -100px;
+    top: -200px;
+    left: 0;
     position: absolute;
     width: 100%;
     transition: 0.5s top linear, 0.5s opacity linear, 0.5s z-index linear;

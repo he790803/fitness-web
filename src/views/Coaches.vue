@@ -86,7 +86,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 120px);
 }
 .text {
   width: 25%;
