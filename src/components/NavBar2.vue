@@ -145,10 +145,12 @@ export default {
 }
 .flip-icon.active {
   transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
   // overflow: hidden;
 }
 .flip-icon-back {
   transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
 }
 .navBar2 {
   background-color: #dac9a6;
