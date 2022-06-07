@@ -129,9 +129,10 @@ export default {
   height: 100%;
   text-align: center;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  // 内嵌的元素在 3D 空間如何呈現：保留 3D
   transform: rotateX(0deg);
   transition: 0.5s transform linear;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .flip-icon-font,
