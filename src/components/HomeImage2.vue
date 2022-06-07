@@ -12,7 +12,7 @@
         <p>lubricant of success.</p>
       </div>
       <img v-if="$store.state.loading" src="https://via.placeholder.com/150/9a9998/9a9998" alt="" />
-      <video v-else ref="imgRight" src="../assets/imgs/homevideo-1.mp4" muted loop autoplay></video>
+      <video v-else ref="imgRight" playsinline src="../assets/imgs/homevideo-1.mp4" muted loop autoplay></video>
     </div>
     <!-- <div class="img-group">
       <div class="img-left">
