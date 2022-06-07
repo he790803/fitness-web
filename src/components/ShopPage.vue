@@ -258,6 +258,7 @@ export default {
   margin-right: 10px;
   margin-top: 8px;
   cursor: pointer;
+  color: #000;
 }
 .course-list button:hover,
 .course-list button.selected {
