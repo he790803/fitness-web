@@ -121,6 +121,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.navBar2 {
+  background-color: #dac9a6;
+  // background-color: #81c7d4;
+  background-image: url('../assets/imgs/texture.png');
+}
 .flip-icon {
   position: relative;
   top: -2.5rem;
@@ -132,6 +137,7 @@ export default {
   -webkit-transform-style: preserve-3d;
   // 内嵌的元素在 3D 空間如何呈現：保留 3D
   transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
   transition: 0.5s transform linear;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -152,11 +158,7 @@ export default {
   transform: rotateX(180deg);
   -webkit-transform: rotateX(180deg);
 }
-.navBar2 {
-  background-color: #dac9a6;
-  // background-color: #81c7d4;
-  background-image: url('../assets/imgs/texture.png');
-}
+
 .logo {
   position: relative;
   display: flex;
