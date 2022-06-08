@@ -78,6 +78,7 @@ export default {
       action: false,
       studentTweenedNumber: 0,
       bodyTweenedNumber: 0,
+      aboutImgLoading: null,
     };
   },
   created() {
@@ -98,9 +99,9 @@ export default {
         gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       }
       // console.log(window.scrollY);
-      console.log(`IMG:${this.$refs.img2.offsetTop}`);
-      console.log(`WINDOW:${window.pageYOffset}`);
-      console.log(`${this.$refs.img2.clientHeight}`);
+      // console.log(`IMG:${this.$refs.img2.offsetTop}`);
+      // console.log(`WINDOW:${window.pageYOffset}`);
+      // console.log(`${this.$refs.img2.clientHeight}`);
     },
   },
   computed: {
@@ -113,12 +114,19 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   this.$store.commit('LOADING', false);
+    // }, 1500);
+    this.aboutImgLoading = new Image();
+    this.aboutImgLoading.src = require('../assets/imgs/shop-banner-1.jpeg');
+    this.aboutImgLoading.addEventListener('load', () => {
       this.$store.commit('LOADING', false);
-    }, 1500);
-    setTimeout(() => {
+      document.body.style.overflow = 'visible';
       this.action = true;
-    }, 1600);
+    });
+    // setTimeout(() => {
+    //   this.action = true;
+    // }, 1600);
   },
 };
 </script>

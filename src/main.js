@@ -18,6 +18,7 @@ import {
   faVolumeHigh,
   faXmark,
   faBars,
+  faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -32,7 +33,8 @@ library.add(
   faTrashCan,
   faVolumeHigh,
   faXmark,
-  faBars
+  faBars,
+  faCircleInfo
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 //vue-loading-overlay

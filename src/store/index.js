@@ -77,6 +77,7 @@ export default new Vuex.Store({
     shoppingCart: [],
     shoppingList: [],
     step2: false,
+    hintShow: false,
   },
   // mutations更新state
   mutations: {
@@ -101,6 +102,9 @@ export default new Vuex.Store({
     },
     LOADING(state, val) {
       state.loading = val;
+    },
+    SHOPPING_CART_HINT(state, val) {
+      state.hintShow = val;
     },
   },
   actions: {

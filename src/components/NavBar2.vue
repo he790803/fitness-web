@@ -60,6 +60,13 @@
         <font-awesome-icon icon="fa-solid fa-shopping-cart" />
         <span>{{ $store.state.shoppingCart.length }}</span>
       </router-link>
+      <div class="shop-cart-hint" :class="{ active: $store.state.hintShow }">
+        <div class="title">
+          <font-awesome-icon icon="fa-solid fa-circle-info" />
+          <p>訊息通知</p>
+        </div>
+        <div class="content">商品已加入購物車</div>
+      </div>
     </div>
   </div>
 </template>
@@ -143,6 +150,36 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.shop-cart-hint {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  z-index: 50;
+  right: 0rem;
+  top: -2rem;
+  opacity: 0;
+  transition: 0.5s opacity linear;
+}
+.shop-cart-hint.active {
+  opacity: 1;
+}
+.shop-cart-hint .title {
+  background-color: #e5ad3e;
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.shop-cart-hint .title p {
+  margin-left: 5px;
+}
+.shop-cart-hint .content {
+  background-color: #dfba719d;
+  height: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+}
 .navBar2 {
   background-color: #dac9a6;
   // background-color: #81c7d4;
@@ -323,12 +360,15 @@ nav ul li a {
   line-height: 40px;
   cursor: pointer;
 }
+.shop-car {
+  position: relative;
+}
 .shop-car a {
   position: absolute;
   // position: relative;
-  top: 1rem;
+  top: -5rem;
   // left: 2.5rem;
-  right: 1rem;
+  right: 2rem;
   // color: #aaa;
   color: #515151;
   font-size: 1.5rem;
@@ -357,12 +397,12 @@ nav ul li a {
   .logo {
     flex-direction: column;
     text-align: center;
-    // align-items: center;
+    align-items: center;
     z-index: 28;
     width: 100%;
   }
   .logo .home-link {
-    width: 100%;
+    width: 40%;
   }
   .flip-icon {
     z-index: 30;
@@ -389,6 +429,11 @@ nav ul li a {
     z-index: 25;
     background-color: #dac9a6;
     background-image: url('../assets/imgs/texture.png');
+  }
+}
+@media screen and (max-width: 440px) {
+  .logo .home-link {
+    width: 70%;
   }
 }
 </style>

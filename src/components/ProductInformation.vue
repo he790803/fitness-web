@@ -83,14 +83,23 @@ export default {
   },
   methods: {
     addShoppingCartHandler(item, num) {
-      this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', {
-        id: item.id,
-        name: item.name,
-        num: num,
-        price: item.specialOffer,
-        img: item.img,
-        totalPrice: this.totalPrice,
-      });
+      if (num <= 0) {
+        alert('請選擇數量!');
+      } else {
+        this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', {
+          id: item.id,
+          name: item.name,
+          num: num,
+          price: item.specialOffer,
+          img: item.img,
+          totalPrice: this.totalPrice,
+        });
+        this.$store.commit('SHOPPING_CART_HINT', true);
+        setTimeout(() => {
+          this.$store.commit('SHOPPING_CART_HINT', false);
+        }, 3000);
+      }
+
       // item.num = num;
       // this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', item);
       // console.log(item, num);

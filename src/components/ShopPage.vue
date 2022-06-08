@@ -74,6 +74,7 @@ export default {
       active: 0,
       preActive: 0,
       isShow: true,
+      shopImgLoading: null,
     };
   },
   created() {
@@ -86,26 +87,20 @@ export default {
     //   this.$store.commit('LOADING', false);
     //   document.body.style.overflow = 'visible';
     // }, 1500);
-    if (this.$refs.imgListC[0].style.backgroundImage) {
+    this.shopImgLoading = new Image();
+    this.shopImgLoading.src = require('../assets/imgs/shop-banner-1.jpeg');
+    this.shopImgLoading.addEventListener('load', () => {
       this.$store.commit('LOADING', false);
       document.body.style.overflow = 'visible';
-    }
+    });
+
     console.log(this.$refs.imgListC[0].style.backgroundImage);
     setInterval(() => {
       this.preActive = this.active;
       this.active = (this.active + 1 + this.total) % this.total;
     }, 5000);
   },
-  // watch: {
-  //   imgListA: {
-  //     handler: function () {
-  //       if (this.$refs.imgListC[0].style.backgroundImage) {
-  //         this.$store.commit('LOADING', false);
-  //         document.body.style.overflow = 'visible';
-  //       }
-  //     },
-  //   },
-  // },
+
   methods: {
     handleScroll() {
       this.isScroll = window.scrollY > 0 ? true : false;

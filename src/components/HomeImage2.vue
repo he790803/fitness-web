@@ -36,12 +36,13 @@ export default {
   data() {
     return {
       loading: true,
+      imgRight: null,
     };
   },
   mounted() {
-    let imgRight = document.createElement('video');
-    imgRight.src = require('@/assets/imgs/homevideo-1.mp4');
-    imgRight.onloadstart = () => {
+    this.imgRight = document.createElement('video');
+    this.imgRight.src = require('@/assets/imgs/homevideo-1.mp4');
+    this.imgRight.onloadstart = () => {
       // 图片加载成功后把地址给原来的img
       // this.$refs.imgRight.src = imgRight.src;
       this.$store.commit('LOADING', false);
