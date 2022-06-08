@@ -431,7 +431,7 @@ nav ul li a {
     background-image: url('../assets/imgs/texture.png');
   }
 }
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 500px) {
   .logo .home-link {
     width: 70%;
   }
