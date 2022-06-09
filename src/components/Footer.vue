@@ -27,6 +27,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 @media screen and (max-width: 830px) {
   .footer-text {
