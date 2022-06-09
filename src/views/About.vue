@@ -183,7 +183,7 @@ export default {
   border-right: 5px solid #ca293e;
   transition: 0.5s all linear;
   position: absolute;
-  top: 8rem;
+  top: 10rem;
   left: 28rem;
 }
 
@@ -324,7 +324,7 @@ export default {
     left: -17rem;
   }
   .text.action::after {
-    top: 6.5rem;
+    top: 8rem;
     left: 17rem;
   }
   .about-us {
