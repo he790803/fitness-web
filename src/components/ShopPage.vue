@@ -100,7 +100,9 @@ export default {
       this.active = (this.active + 1 + this.total) % this.total;
     }, 5000);
   },
-
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
     handleScroll() {
       this.isScroll = window.scrollY > 0 ? true : false;
@@ -303,6 +305,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.card-text .card-title,
+.card-text .card-content {
+  font-family: GenJyuu, anton;
 }
 .card-text .card-title p {
   font-size: 1.8rem;

@@ -11,7 +11,7 @@
     <div class="about-us">
       <div class="about-img">
         <img src="@/assets/imgs/about-4.jpg" alt="" />
-        <img src="@/assets/imgs/about-2.jpg" alt="" />
+        <img src="@/assets/imgs/about-6.jpeg" alt="" />
       </div>
       <div class="about-txt">
         <h1>關於我們</h1>
@@ -31,7 +31,7 @@
     <div class="about-information">
       <div class="row-1">
         <div class="row-1-img" ref="img1">
-          <img src="@/assets/imgs/about-3.jpg" alt="" />
+          <img src="@/assets/imgs/about-row-1.jpeg" alt="about information配圖1" />
         </div>
         <div class="row-1-text row-text">
           <p>會員總數已達到</p>
@@ -40,7 +40,7 @@
       </div>
       <div class="row-2">
         <div class="row-2-img" ref="img2">
-          <img src="@/assets/imgs/about-3.jpg" alt="" />
+          <img src="@/assets/imgs/about-row-2.jpeg" alt="about information配圖2" />
         </div>
         <div class="row-2-text row-text">
           <p>至今我們已協助消滅掉</p>
@@ -112,7 +112,9 @@ export default {
       return this.bodyTweenedNumber.toFixed(1);
     },
   },
-
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   mounted() {
     // setTimeout(() => {
     //   this.$store.commit('LOADING', false);
