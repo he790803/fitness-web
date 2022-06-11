@@ -336,6 +336,7 @@ export default {
   }
   .about-txt p {
     font-size: 1.2rem;
+    padding: 2rem;
   }
   .row-1,
   .row-2,

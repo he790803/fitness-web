@@ -308,7 +308,7 @@ export default {
 }
 .card-text .card-title,
 .card-text .card-content {
-  font-family: GenJyuu, anton;
+  font-family: GenShinGothic, anton;
 }
 .card-text .card-title p {
   font-size: 1.8rem;

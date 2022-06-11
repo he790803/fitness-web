@@ -162,9 +162,12 @@ export default {
     font-size: 1.3rem;
     align-items: center;
   }
-  .text h1::after {
-    content: '、';
+  .text h1 {
+    margin-right: 1rem;
   }
+  /* .text h1::after {
+    content: '、';
+  } */
   .text h1:last-child::after {
     content: '';
   }
@@ -190,6 +193,23 @@ export default {
   .coaches li .content {
     height: 300px;
     border-radius: 0px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .coaches li {
+    height: 100%;
+  }
+  .coaches li .content {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .coaches li .content p {
+    width: auto;
+  }
+}
+@media screen and (max-width: 340px) {
+  .text h1 {
+    font-size: 2rem;
   }
 }
 </style>
