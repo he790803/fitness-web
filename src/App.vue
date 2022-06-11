@@ -136,8 +136,8 @@ export default {
   src: url('./assets/fonts/Anton-Regular.ttf');
 }
 @font-face {
-  font-family: GenJyuu;
-  src: url('./assets/fonts/GenJyuuGothic-Bold.ttf');
+  font-family: GenShinGothic;
+  src: url('./assets/fonts/GenShinGothic-Bold.ttf');
 }
 * {
   padding: 0;
@@ -150,7 +150,7 @@ export default {
   // background: #fffbfa;
   background-color: #eee;
   background-image: url('./assets/imgs/texture.png');
-  font-family: anton, GenJyuu, Arial, sans-serif;
+  font-family: anton, GenShinGothic, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
