@@ -45,7 +45,7 @@
               <p>{{ item.name }}</p>
             </div>
             <div class="card-content">
-              <p>{{ item.content }}.</p>
+              <p>{{ item.content }}</p>
             </div>
             <div class="card-price">
               <div class="original-price">${{ item.originalPrice }}</div>
@@ -327,13 +327,17 @@ export default {
 }
 .card-price {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-end;
   color: #000;
-  align-items: flex-end;
+  // align-items: flex-end;
+  align-items: center;
   height: 100%;
 }
 .card-price .original-price {
   text-decoration: line-through;
+  color: #aaa;
+  margin-right: 1rem;
 }
 .card-price .special-offer {
   font-size: 2rem;

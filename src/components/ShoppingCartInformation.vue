@@ -128,13 +128,6 @@
 <script>
 export default {
   name: 'shoppingCartInformation',
-  mounted() {
-    this.subtotal;
-
-    setTimeout(() => {
-      this.$store.commit('LOADING', false);
-    }, 1500);
-  },
   data() {
     return {
       shoppingCart: null,
@@ -165,6 +158,13 @@ export default {
       addressErrorMessage: '',
       payMethodErrorMessage: '',
     };
+  },
+  mounted() {
+    this.subtotal;
+
+    setTimeout(() => {
+      this.$store.commit('LOADING', false);
+    }, 1500);
   },
   watch: {
     shoppingCart: {
