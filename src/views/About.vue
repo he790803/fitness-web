@@ -215,8 +215,8 @@ export default {
   font-size: 2.8rem;
 }
 .about-txt p {
-  width: 60%;
-  padding: 2rem 0;
+  width: 100%;
+  padding: 2rem 0rem 2rem 2rem;
   font-weight: 600;
   font-size: 1.2rem;
 }
