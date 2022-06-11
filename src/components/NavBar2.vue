@@ -3,7 +3,7 @@
     <div class="logo" @click="selected = null">
       <div class="home-link">
         <router-link to="/">
-          <p>Push Yourself</p>
+          <p>Minus C</p>
           <p>Fitness</p>
         </router-link>
       </div>
