@@ -157,6 +157,7 @@ export default {
 .banner {
   position: relative;
   height: calc(100vh - 120px);
+  font-family: anton, Lato, Helvetica, Lucida Grande, Arial, Heiti TC, Microsoft JhengHei, sans-serif;
   // background-color: deepskyblue;
 }
 .banner-img-list {
@@ -168,7 +169,6 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.5s, height 0.5s;
-  font-family: anton;
 }
 .scroll .banner-img-list {
   width: 1400px;
