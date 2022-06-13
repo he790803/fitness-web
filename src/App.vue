@@ -139,6 +139,7 @@ export default {
   font-family: GenShinGothic;
   src: url('./assets/fonts/GenShinGothic-Bold.ttf');
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -150,7 +151,8 @@ export default {
   // background: #fffbfa;
   background-color: #eee;
   background-image: url('./assets/imgs/texture.png');
-  font-family: anton, GenShinGothic, Arial, sans-serif;
+  // font-family: anton, GenShinGothic, Arial, sans-serif;
+  font-family: Lato, Helvetica, Lucida Grande, Arial, Heiti TC, Microsoft JhengHei, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;

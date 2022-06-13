@@ -100,6 +100,7 @@ export default {
   top: 45%;
   left: 15%;
   z-index: 2;
+  font-family: anton;
 }
 .slogan p {
   font-size: 3rem;

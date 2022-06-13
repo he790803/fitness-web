@@ -275,7 +275,7 @@ nav ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  font-weight: 600;
   // min-width: 800px;
 }
 

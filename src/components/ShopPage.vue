@@ -168,6 +168,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.5s, height 0.5s;
+  font-family: anton;
 }
 .scroll .banner-img-list {
   width: 1400px;
@@ -308,7 +309,8 @@ export default {
 }
 .card-text .card-title,
 .card-text .card-content {
-  font-family: GenShinGothic, anton;
+  // font-family: GenShinGothic, anton;
+  font-family: Lato, Helvetica, Lucida Grande, Arial, Heiti TC, Microsoft JhengHei, sans-serif;
 }
 .card-text .card-title p {
   font-size: 1.8rem;
@@ -333,6 +335,7 @@ export default {
   // align-items: flex-end;
   align-items: center;
   height: 100%;
+  font-family: anton;
 }
 .card-price .original-price {
   text-decoration: line-through;
