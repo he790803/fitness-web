@@ -234,14 +234,14 @@ export default {
   background-color: #dac9a6;
   background-image: url('../assets/imgs/texture.png');
 }
-.logo > .home-link {
-  width: 20%;
-}
+// .logo > .home-link {
+//   width: 20%;
+// }
 .logo p {
   // padding: 0.3rem 0 0 1.6rem;
   font-size: 1.8rem;
   font-family: anton;
-  letter-spacing: 5px;
+  padding: 0;
   // color: rgba(0, 0, 0, 0.79);
   color: #eee;
 }
@@ -251,8 +251,6 @@ export default {
   color: #eee;
   // font-family: homeFont;
   font-size: 2rem;
-  letter-spacing: normal;
-  padding: 0;
   // text-align: center;
 }
 .fa-bars,
@@ -366,7 +364,7 @@ nav ul li a {
 .shop-car a {
   position: absolute;
   // position: relative;
-  top: -5rem;
+  top: -6.5rem;
   // left: 2.5rem;
   right: 2rem;
   // color: #aaa;

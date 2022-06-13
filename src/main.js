@@ -54,7 +54,7 @@ Vue.config.productionTip = false;
 
 Vue.directive('title', {
   inserted: function () {
-    document.title = '超越自我 健身中心';
+    document.title = 'Minus C Fitness';
   },
 });
 
