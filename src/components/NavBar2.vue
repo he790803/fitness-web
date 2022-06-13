@@ -286,10 +286,10 @@ nav ul {
   align-items: center;
 }
 .vol p {
-  width: 145px;
+  width: 90px;
   text-align: center;
   // font-size: 1.3rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #515151;
 }
