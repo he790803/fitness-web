@@ -60,7 +60,7 @@
       </div>
       <div class="total">
         <span>總計:</span>
-        <span>${{ ccc }}</span>
+        <span>${{ total }}</span>
       </div>
     </div>
     <div class="buyer-information">
@@ -113,15 +113,15 @@
       </div>
     </div>
     <div class="checkout">
-      <router-link
-        @click.native="submitHandler(shoppingCart)"
-        to="shopping-cart/checkout"
-        tag="button"
+      <button
+        @click="submitHandler(shoppingCart)"
         :disabled="(disabled = !submitCheck)"
         :class="{ disabled: !submitCheck }"
-        >結帳</router-link
       >
+        結帳
+      </button>
     </div>
+    <!-- to="shopping-cart/checkout" -->
   </div>
 </template>
 
@@ -177,6 +177,19 @@ export default {
       },
       deep: true,
     },
+    // 'customer.name': {
+    //   handler: function (newValue) {
+    //     if (!newValue) {
+    //       this.errors.nameError = true;
+    //       this.nameErrorMessage = '收件人不得為空!';
+    //     } else {
+    //       this.errors.nameError = false;
+    //       this.nameErrorMessage = '';
+    //     }
+    //   },
+    //   immediate: true,
+    // },
+
     customer: {
       handler: function () {
         if (!this.customer.name) {
@@ -206,7 +219,7 @@ export default {
         let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (!regex.test(this.customer.Email)) {
           this.errors.EmailError = true;
-          this.EmailErrorMessage = 'Email格式錯誤!';
+          this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
         } else {
           this.errors.EmailError = false;
           this.EmailErrorMessage = '';
@@ -215,20 +228,25 @@ export default {
         let mobileReg = /^(09)[0-9]{8}$/;
         if (!mobileReg.test(this.customer.cellphone)) {
           this.errors.cellphoneError = true;
-          this.cellphoneErrorMessage = '手機格式錯誤!';
+          this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
         } else {
           this.errors.cellphoneError = false;
           this.cellphoneErrorMessage = '';
         }
       },
       deep: true,
+      immediate: true,
     },
   },
   methods: {
     submitHandler(item) {
       // let a = [{ username: 'AAA', phone: 123123123, soppingCart: [{ name: 'A課程' }, { name: 'B課程' }] }];
-      this.$store.dispatch('UPDATE_SHOPPING_CART', [this.customer, item, this.listTotalPrice]);
-      // 清空購物車(待補)
+      if (!this.$store.state.shoppingCart.length) {
+        alert('購無車尚無商品唷!');
+      } else {
+        this.$store.dispatch('UPDATE_SHOPPING_CART', [this.customer, item, this.listTotalPrice]);
+        this.$router.push({ path: 'shopping-cart/checkout' });
+      }
     },
     deleteHandler(item) {
       this.$store.dispatch('REMOVE_SHOPPING_CART_ITEM', item);
@@ -286,7 +304,7 @@ export default {
         return (this.subtotalPrice += item.totalPrice);
       });
     },
-    ccc() {
+    total() {
       if (!this.isDiscount) {
         return (this.listTotalPrice = this.subtotalPrice);
       } else {
@@ -364,7 +382,7 @@ export default {
   justify-content: space-around;
 }
 .order-item .item-img {
-  width: 20%;
+  width: 30%;
 }
 .item-img img {
   width: 100%;
@@ -375,6 +393,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font-family: GenShinGothic;
 }
 
 .description .title {
@@ -450,11 +469,12 @@ export default {
 .discount-item {
   // border: 1px solid rgb(37, 190, 55);
   color: #fff;
-  background: rgb(56, 210, 74);
+  background: #dac9a6;
   border-radius: 0.3rem;
   padding: 0.4rem;
   margin-top: 0.3rem;
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: 5px;
 }
 .x-mark {
   width: 1rem;
@@ -465,7 +485,13 @@ export default {
   font-size: 1.6rem;
   font-weight: 600;
 }
-
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+  -webkit-text-fill-color: #333;
+}
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #eee inset !important;
+}
 .input-item {
   display: flex;
   flex-direction: column;

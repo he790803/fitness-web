@@ -63,6 +63,7 @@ export default {
 }
 .shop-step-list p {
   text-align: center;
+  font-size: 1.3rem;
 }
 .shop-step-num {
   width: 45px;

@@ -67,6 +67,7 @@ export default {
       num: 0,
       name: '',
       totalPrice: 0,
+      sameItem: false,
     };
   },
   mounted() {
@@ -86,19 +87,32 @@ export default {
       if (num <= 0) {
         alert('請選擇數量!');
       } else {
-        this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', {
-          id: item.id,
-          name: item.name,
-          num: num,
-          price: item.specialOffer,
-          img: item.img,
-          totalPrice: this.totalPrice,
-        });
+        if (this.$store.state.shoppingCart.length) {
+          this.$store.state.shoppingCart.forEach((product) => {
+            if (product.name === item.name) {
+              this.$store.dispatch('CLASS_CONTROL', [item, num]);
+              this.sameItem = true;
+              console.log('重複');
+            }
+          });
+        }
+        if (!this.sameItem) {
+          this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', {
+            id: item.id,
+            name: item.name,
+            num: num,
+            price: item.specialOffer,
+            img: item.img,
+            totalPrice: this.totalPrice,
+          });
+          console.log('無重複');
+        }
         this.$store.commit('SHOPPING_CART_HINT', true);
         setTimeout(() => {
           this.$store.commit('SHOPPING_CART_HINT', false);
         }, 3000);
       }
+      console.log('錯誤');
 
       // item.num = num;
       // this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', item);
