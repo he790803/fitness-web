@@ -5,7 +5,7 @@
         <p>不與他人比較</p>
         <p>揮灑汗水</p>
         <p>目標只有一個</p>
-        <h1>"超越自我" 健身中心</h1>
+        <h1>"超越自我"</h1>
       </div>
     </div>
     <div class="about-us">
@@ -15,16 +15,22 @@
       </div>
       <div class="about-txt">
         <h1>關於我們</h1>
-        <h1>Push Yourself</h1>
+        <h1>Minus C - 減去您的卡路里</h1>
         <p>
-          我們是一群喜愛健身，對健康生活充滿熱情的同好。我們樂於自己烹調平日所需的餐食，可是偶爾也想忙裡偷閒。
-          所以，我們開始想像，是否可以融合便利商店的優點，提供更精緻、多元且層次更豐富的餐食給消費者， 於是 Push
-          Yourself 就誕生了。
+          健身不單單只是追求身體外在體態的表現，我們認為更重要的是釋放內在的壓力，戰勝自我的愉悅。
+          <br />
+          創立Minus C，初衷就是希望能把這份熱情與健康，帶進您的生活之中!
+          <br />
+          來到Minus
+          C，不會有團隊人員為了推銷課程，去評論外在任何的不足，因為來到這，不需和誰去做比較，我們的目標只有自己，今天的我們，超越了昨天的自己。
         </p>
         <p>
-          當您在忙碌的工作結束後，用僅剩不多的個人時間，以健身追求另一個自我實現的同時，我們不希望您為了同等重要的飲食而
-          耗費大量心力，這個時候，您只需要從冰箱拿出一份 Push Yourself
-          的餐食，多元的口味及完善的營養配比，絕對能滿足您的需求。
+          團隊不斷充實自己相關專業，並且相互配合，提供會員最合乎身體狀態的訓練以及後續調整與飲食。
+          <br />
+          也很用心的規畫許多不同樣式的課程，去滿足各種愛好運動的族群。
+          <br />
+          Minus
+          C為會員提供從課前熱身，課中專業的技術指導，以及課後的放鬆與飲食規劃，以利幫助會員們在運動的道路上，減少卡路里，減少壓力，減少運動傷害發生的可能性!
         </p>
       </div>
     </div>
@@ -166,7 +172,7 @@ export default {
   transition: 0.5s all linear;
   position: absolute;
   top: -1rem;
-  left: -1rem;
+  left: -2rem;
 }
 
 .text::after {
@@ -184,7 +190,7 @@ export default {
   transition: 0.5s all linear;
   position: absolute;
   top: 10rem;
-  left: 28rem;
+  left: 14rem;
 }
 
 .text p {
@@ -216,7 +222,7 @@ export default {
 }
 .about-txt p {
   width: 100%;
-  padding: 2rem 0rem 2rem 2rem;
+  padding: 1rem 0rem 1rem 2rem;
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -325,7 +331,7 @@ export default {
   }
   .text.action::after {
     top: 8rem;
-    left: 17rem;
+    left: 9rem;
   }
   .about-us {
     flex-direction: column;
@@ -361,9 +367,6 @@ export default {
   }
 
   @media screen and (max-width: 409px) {
-    .text > h1 {
-      font-size: 1.5rem;
-    }
     .text.action::before,
     .text.action::after {
       display: none;
