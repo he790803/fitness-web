@@ -64,42 +64,68 @@
       </div>
     </div>
     <div class="buyer-information">
-      <h1>填寫資料</h1>
+      <h1>填寫資料 (*為必填欄位)</h1>
       <div class="input-item">
-        <label for="recipient">收件人姓名</label>
+        <label for="recipient">*收件人姓名</label>
         <input
           type="text"
           name="收件人姓名"
           id="recipient"
           placeholder="請輸入收件人姓名"
           v-model.trim="customer.name"
+          @change="check('recipient')"
+          @blur="check('recipient')"
         />
         <span v-if="errors.nameError">{{ nameErrorMessage }}</span>
       </div>
       <div class="input-item">
-        <label for="email">Email</label>
-        <input type="text" name="Email" id="email" placeholder="請輸入Email" v-model.trim="customer.Email" />
+        <label for="email">*Email</label>
+        <input
+          type="text"
+          name="Email"
+          id="email"
+          placeholder="請輸入Email (ex:ooo@xxx.com)"
+          v-model.trim="customer.Email"
+          @change="check('Email')"
+          @blur="check('Email')"
+        />
         <span v-if="errors.EmailError">{{ EmailErrorMessage }}</span>
       </div>
       <div class="input-item">
-        <label for="cellphone">手機</label>
-        <input type="text" name="手機" id="cellphone" placeholder="請輸入手機號碼" v-model.trim="customer.cellphone" />
+        <label for="cellphone">*手機</label>
+        <input
+          type="text"
+          name="手機"
+          id="cellphone"
+          placeholder="請輸入手機號碼 (ex:09xxxxxxxx)"
+          v-model.trim="customer.cellphone"
+          @change="check('cellphone')"
+          @blur="check('cellphone')"
+        />
         <span v-if="errors.cellphoneError">{{ cellphoneErrorMessage }}</span>
       </div>
       <div class="input-item">
-        <label for="address">地址</label>
+        <label for="address">*地址</label>
         <input
           type="text"
           name="收件地址人姓名"
           id="address"
           placeholder="請輸入收件地址"
           v-model.trim="customer.address"
+          @change="check('address')"
+          @blur="check('address')"
         />
         <span v-if="errors.addressError">{{ addressErrorMessage }}</span>
       </div>
       <div class="input-item">
-        <label for="pay-method">付款方式</label>
-        <select name="付款方式" id="pay-method" v-model="customer.payMethod">
+        <label for="pay-method">*付款方式</label>
+        <select
+          name="付款方式"
+          id="pay-method"
+          v-model="customer.payMethod"
+          @change="check('pay-method')"
+          @blur="check('pay-method')"
+        >
           <option disabled="disabled" selected="selected" value="">請選擇購買方式</option>
           <option :value="ATM">ATM</option>
           <option :value="Credit">信用卡</option>
@@ -187,56 +213,99 @@ export default {
     //       this.nameErrorMessage = '';
     //     }
     //   },
-    //   immediate: true,
     // },
+    // 'customer.address': {
+    //   handler: function (newValue) {
+    //     if (!newValue) {
+    //       this.errors.addressError = true;
+    //       this.addressErrorMessage = '收件地址不得為空!';
+    //     } else {
+    //       this.errors.addressError = false;
+    //       this.addressErrorMessage = '';
+    //     }
+    //   },
+    // },
+    // 'customer.payMethod': {
+    //   handler: function (newValue) {
+    //     if (!newValue) {
+    //       this.errors.payMethodError = true;
+    //       this.payMethodErrorMessage = '請選擇付款方式!';
+    //     } else {
+    //       this.errors.payMethodError = false;
+    //       this.payMethodErrorMessage = '';
+    //     }
+    //   },
+    // },
+    // 'customer.Email': {
+    //   handler: function (newValue) {
+    //     let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //     if (!regex.test(newValue)) {
+    //       this.errors.EmailError = true;
+    //       this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
+    //     } else {
+    //       this.errors.EmailError = false;
+    //       this.EmailErrorMessage = '';
+    //     }
+    //   },
+    // },
+    // 'customer.cellphone': {
+    //   handler: function (newValue) {
+    //     let mobileReg = /^(09)[0-9]{8}$/;
+    //     if (!mobileReg.test(newValue)) {
+    //       this.errors.cellphoneError = true;
+    //       this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
+    //     } else {
+    //       this.errors.cellphoneError = false;
+    //       this.cellphoneErrorMessage = '';
+    //     }
+    //   },
+    // },
+    // customer: {
+    //   handler: function () {
+    //     if (!this.customer.name) {
+    //       this.errors.nameError = true;
+    //       this.nameErrorMessage = '收件人不得為空!';
+    //     } else {
+    //       this.errors.nameError = false;
+    //       this.nameErrorMessage = '';
+    //     }
 
-    customer: {
-      handler: function () {
-        if (!this.customer.name) {
-          this.errors.nameError = true;
-          this.nameErrorMessage = '收件人不得為空!';
-        } else {
-          this.errors.nameError = false;
-          this.nameErrorMessage = '';
-        }
+    //     if (!this.customer.address) {
+    //       this.errors.addressError = true;
+    //       this.addressErrorMessage = '收件地址不得為空!';
+    //     } else {
+    //       this.errors.addressError = false;
+    //       this.addressErrorMessage = '';
+    //     }
 
-        if (!this.customer.address) {
-          this.errors.addressError = true;
-          this.addressErrorMessage = '收件地址不得為空!';
-        } else {
-          this.errors.addressError = false;
-          this.addressErrorMessage = '';
-        }
+    //     if (!this.customer.payMethod) {
+    //       this.errors.payMethodError = true;
+    //       this.payMethodErrorMessage = '請選擇付款方式!';
+    //     } else {
+    //       this.errors.payMethodError = false;
+    //       this.payMethodErrorMessage = '';
+    //     }
 
-        if (!this.customer.payMethod) {
-          this.errors.payMethodError = true;
-          this.payMethodErrorMessage = '請選擇付款方式!';
-        } else {
-          this.errors.payMethodError = false;
-          this.payMethodErrorMessage = '';
-        }
+    //     let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //     if (!regex.test(this.customer.Email)) {
+    //       this.errors.EmailError = true;
+    //       this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
+    //     } else {
+    //       this.errors.EmailError = false;
+    //       this.EmailErrorMessage = '';
+    //     }
 
-        let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!regex.test(this.customer.Email)) {
-          this.errors.EmailError = true;
-          this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
-        } else {
-          this.errors.EmailError = false;
-          this.EmailErrorMessage = '';
-        }
-
-        let mobileReg = /^(09)[0-9]{8}$/;
-        if (!mobileReg.test(this.customer.cellphone)) {
-          this.errors.cellphoneError = true;
-          this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
-        } else {
-          this.errors.cellphoneError = false;
-          this.cellphoneErrorMessage = '';
-        }
-      },
-      deep: true,
-      immediate: true,
-    },
+    //     let mobileReg = /^(09)[0-9]{8}$/;
+    //     if (!mobileReg.test(this.customer.cellphone)) {
+    //       this.errors.cellphoneError = true;
+    //       this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
+    //     } else {
+    //       this.errors.cellphoneError = false;
+    //       this.cellphoneErrorMessage = '';
+    //     }
+    //   },
+    //   deep: true,
+    // },
   },
   methods: {
     submitHandler(item) {
@@ -268,22 +337,6 @@ export default {
         }
       }
       this.couponCode = '';
-
-      //   this.coupons.forEach((coupon) => {
-      //     if (!coupon.isUse) {
-      //       if (coupon.code === couponCode) {
-      //         coupon.isUse = true;
-      //         this.isDiscount = coupon.name;
-      //         this.discountNum = coupon.discount;
-      //         this.couponUse.push({ code: coupon.code, name: coupon.name });
-      //         this.listTotalPrice = this.subtotalPrice * coupon.discount;
-      //       }
-      //     } else {
-      //       window.alert('已使用優惠券');
-      //     }
-      //     this.couponCode = '';
-      //   });
-      // },
     },
     cancelCoupon(code) {
       this.coupons.forEach((coupon) => {
@@ -295,6 +348,60 @@ export default {
       this.couponUse = this.couponUse.filter((coupon) => {
         return coupon.code !== code;
       });
+    },
+    check(type) {
+      switch (type) {
+        case 'recipient':
+          if (!this.customer.name) {
+            this.errors.nameError = true;
+            this.nameErrorMessage = '收件人不得為空!';
+          } else {
+            this.errors.nameError = false;
+            this.nameErrorMessage = '';
+          }
+          break;
+        case 'Email':
+          let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+          if (!regex.test(this.customer.Email)) {
+            this.errors.EmailError = true;
+            this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
+          } else {
+            this.errors.EmailError = false;
+            this.EmailErrorMessage = '';
+          }
+          break;
+        case 'address':
+          if (!this.customer.address) {
+            this.errors.addressError = true;
+            this.addressErrorMessage = '收件地址不得為空!';
+          } else {
+            this.errors.addressError = false;
+            this.addressErrorMessage = '';
+          }
+          break;
+        case 'cellphone':
+          let mobileReg = /^(09)[0-9]{8}$/;
+          if (!mobileReg.test(this.customer.cellphone)) {
+            this.errors.cellphoneError = true;
+            this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
+          } else {
+            this.errors.cellphoneError = false;
+            this.cellphoneErrorMessage = '';
+          }
+          break;
+        case 'pay-method':
+          if (!this.customer.payMethod) {
+            this.errors.payMethodError = true;
+            this.payMethodErrorMessage = '請選擇付款方式!';
+          } else {
+            this.errors.payMethodError = false;
+            this.payMethodErrorMessage = '';
+          }
+          break;
+        default:
+          console.log('發生錯誤!!!');
+          break;
+      }
     },
   },
   computed: {
@@ -527,7 +634,6 @@ input:-webkit-autofill {
 }
 .buyer-information textarea {
   height: 100px;
-
   overflow: auto;
   resize: vertical;
   outline: 0;

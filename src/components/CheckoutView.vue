@@ -38,28 +38,31 @@
       <ul v-if="customerInformation.name ? customerInformation.name : []">
         <li>
           <label for="recipient">收件人姓名:</label>
-          <p for="recipient">{{ customerInformation.name }}</p>
+          <p>{{ customerInformation.name }}</p>
         </li>
         <li>
           <label for="email">Email:</label>
-          <p for="recipient">{{ customerInformation.Email }}</p>
+          <p>{{ customerInformation.Email }}</p>
         </li>
         <li>
           <label for="cellphone">手機:</label>
-          <p for="recipient">{{ customerInformation.cellphone }}</p>
+          <p>{{ customerInformation.cellphone }}</p>
         </li>
         <li>
           <label for="address">地址:</label>
-          <p for="recipient">{{ customerInformation.address }}</p>
+          <p>{{ customerInformation.address }}</p>
         </li>
         <li>
           <label for="pay-method">付款方式:</label>
-          <p for="recipient">{{ customerInformation.payMethod }}</p>
+          <p>{{ customerInformation.payMethod }}</p>
         </li>
-        <!-- <li>
+        <li>
           <label for="remark">備註:</label>
-          <textarea name="remark" id="" cols="30" rows="3" disabled="disabled"> </textarea>
-        </li> -->
+          <p style="white-space: pre-line">{{ customerInformation.remark || '無' }}</p>
+          <!-- <textarea name="remark" id="" cols="30" rows="3" disabled="disabled">
+            {{ customerInformation.remark }}
+          </textarea> -->
+        </li>
       </ul>
     </div>
     <div class="checkout">

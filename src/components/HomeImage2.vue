@@ -42,8 +42,9 @@ export default {
   mounted() {
     this.imgRight = document.createElement('video');
     this.imgRight.src = require('@/assets/imgs/homevideo-1.mp4');
+
     this.imgRight.onloadstart = () => {
-      // 图片加载成功后把地址给原来的img
+      // 圖片加載成功後把地址給原來的img
       // this.$refs.imgRight.src = imgRight.src;
       this.$store.commit('LOADING', false);
     };
