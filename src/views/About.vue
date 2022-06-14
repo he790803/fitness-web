@@ -212,7 +212,8 @@ export default {
 .about-txt {
   width: 50%;
   display: flex;
-  padding-top: 2rem;
+  justify-content: center;
+  /* padding-top: 2rem; */
   flex-direction: column;
   align-items: center;
 }
