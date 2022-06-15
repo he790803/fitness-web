@@ -63,7 +63,7 @@
       <div class="shop-cart-hint" :class="{ active: $store.state.hintShow }">
         <div class="title">
           <font-awesome-icon icon="fa-solid fa-circle-info" />
-          <p>訊息通知</p>
+          <p>Minus C - 訊息通知</p>
         </div>
         <div class="content">商品已加入購物車</div>
       </div>
@@ -151,12 +151,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .shop-cart-hint {
-  width: 160px;
-  height: 160px;
+  width: 360px;
+  height: 100px;
   position: absolute;
   z-index: 50;
-  right: 0rem;
-  top: -2rem;
+  right: 1rem;
+  top: -4rem;
   opacity: 0;
   transition: 0.5s opacity linear;
 }
@@ -168,14 +168,17 @@ export default {
   display: flex;
   align-items: center;
   color: #000;
+  padding: 0 1rem;
+  font-weight: 600;
+  height: 35px;
 }
 .shop-cart-hint .title p {
   margin-left: 5px;
 }
 .shop-cart-hint .content {
-  background-color: #dfba719d;
+  background-color: rgba(238, 238, 238, 0.697);
   height: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   font-size: 1.2rem;
   font-weight: 600;
   color: #000;
