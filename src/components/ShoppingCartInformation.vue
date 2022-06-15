@@ -41,6 +41,7 @@
       <div class="coupon">
         <p>折扣碼:</p>
         <input type="text" placeholder="請輸入優惠代碼" v-model="couponCode" @keyup.enter="couponHandler(couponCode)" />
+        <font-awesome-icon class="coupon-icon" icon="fa-solid fa-paper-plane" @click="couponHandler(couponCode)" />
       </div>
       <div class="subtotal">
         <p>小計:</p>
@@ -152,6 +153,8 @@
 </template>
 
 <script>
+import { faL } from '@fortawesome/free-solid-svg-icons';
+
 export default {
   name: 'shoppingCartInformation',
   data() {
@@ -163,6 +166,7 @@ export default {
       isDiscount: null,
       couponUse: [],
       couponCode: '',
+      couponIsUse: false,
       ATM: 'ATM',
       Credit: '信用卡',
       Cash: '貨到付款',
@@ -321,21 +325,30 @@ export default {
       this.$store.dispatch('REMOVE_SHOPPING_CART_ITEM', item);
     },
     couponHandler(couponCode) {
-      for (let i = 0; i < this.coupons.length; i++) {
-        if (!this.coupons[i].isUse) {
-          if (this.coupons[i].code === couponCode) {
-            this.coupons[i].isUse = true;
-            this.isDiscount = this.coupons[i].name;
-            this.discountNum = this.coupons[i].discount;
-            this.couponUse.push({ code: this.coupons[i].code, name: this.coupons[i].name });
-            this.listTotalPrice = this.subtotalPrice * this.coupons[i].discount;
+      if (!couponCode) {
+        alert('請輸入優惠碼!');
+      } else {
+        this.couponIsUse = this.coupons.every(function (coupon, index, coupons) {
+          return coupon.isUse === false;
+        });
+
+        for (let i = 0; i < this.coupons.length; i++) {
+          if (this.couponIsUse && !this.coupons[i].isUse) {
+            if (this.coupons[i].code === couponCode) {
+              this.coupons[i].isUse = true;
+              this.isDiscount = this.coupons[i].name;
+              this.discountNum = this.coupons[i].discount;
+              this.couponUse.push({ code: this.coupons[i].code, name: this.coupons[i].name });
+              this.listTotalPrice = this.subtotalPrice * this.coupons[i].discount;
+              break;
+            }
+          } else {
+            window.alert(`已使用優惠券或者優惠碼錯誤 (一筆訂單限用一張優惠券)`);
             break;
           }
-        } else {
-          window.alert('已使用優惠券');
-          break;
         }
       }
+
       this.couponCode = '';
     },
     cancelCoupon(code) {
@@ -559,6 +572,12 @@ export default {
   width: 70%;
   background-color: #eee;
   background-image: url('../assets/imgs/texture.png');
+}
+.price-list .coupon .coupon-icon {
+  cursor: pointer;
+}
+.price-list .coupon .coupon-icon:hover {
+  color: #dfba71;
 }
 .subtotal,
 .discount,

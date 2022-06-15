@@ -19,6 +19,7 @@ import {
   faXmark,
   faBars,
   faCircleInfo,
+  faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -34,7 +35,8 @@ library.add(
   faVolumeHigh,
   faXmark,
   faBars,
-  faCircleInfo
+  faCircleInfo,
+  faPaperPlane
 );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 //vue-loading-overlay
