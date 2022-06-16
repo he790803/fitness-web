@@ -51,8 +51,8 @@
           <p>至今我們已協助消滅掉</p>
           <p>{{ bodyNumber }}% 體脂肪</p>
         </div>
-        <div class="row-2-img">
-          <img src="@/assets/imgs/about-3.jpg" alt="" />
+        <div class="row-2-img right">
+          <img src="@/assets/imgs/about-row-2-2.jpeg" alt="" />
         </div>
       </div>
       <div class="row-3">
@@ -60,7 +60,7 @@
           <p>我們本身熱愛運動，希望也能把這份喜愛的心情帶給你，將運動融入自己生活的一部分之中!</p>
         </div>
         <div class="row-3-img">
-          <img src="@/assets/imgs/about-3.jpg" alt="" />
+          <img src="@/assets/imgs/about-row-3.jpeg" alt="" />
         </div>
       </div>
     </div>
@@ -239,6 +239,7 @@ export default {
   width: 45%;
   padding-left: 2%;
 }
+
 .row-1 {
   display: flex;
   height: 300px;
@@ -284,6 +285,9 @@ export default {
   height: 100%;
   object-fit: cover;
   vertical-align: middle;
+}
+.row-2-img.right img {
+  object-position: 100% 80%;
 }
 .row-2-text {
   width: 33%;
@@ -358,6 +362,11 @@ export default {
     width: 100%;
     margin: 0;
   }
+  .row-1,
+  .row-2,
+  .row-3 {
+    min-height: 400px;
+  }
   .row-2-img:last-child {
     display: none;
   }
@@ -369,6 +378,11 @@ export default {
     .text.action::before,
     .text.action::after {
       display: none;
+    }
+    .row-1,
+    .row-2,
+    .row-3 {
+      min-height: auto;
     }
   }
 }

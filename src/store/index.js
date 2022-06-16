@@ -26,7 +26,8 @@ export default new Vuex.Store({
         name: '1對1教練課',
         originalPrice: 1100,
         specialOffer: 950,
-        content: '為 1 對 1的教學課程，從身體評估、目標了解到操作器械以達到鍛鍊效果。',
+        content:
+          '為 1 對 1的教學課程，從身體評估，了解學員目標，並規劃。 課程包含，課前熱身，課中量身制訂的課表，課後肌肉放鬆與飲食建議。',
         time: '2小時',
         img: require('../assets/imgs/cardImg1.jpg'),
       },
@@ -36,8 +37,7 @@ export default new Vuex.Store({
         name: '團體教練課 5人',
         originalPrice: 900,
         specialOffer: 750,
-        content:
-          '動物三年戀愛方便危機疾病污染一面放下地理市政府，參數色彩，走到加盟表演意大利，學院供應商絶對呼吸零售影視我這，意大利增強玻璃新增高雄藍色，意味着招標看法資源位元這個部分全部執行環境才會，也要證券百度你沒有認識經過只要窗口一步成績點這裡會議工作，研究生依法。',
+        content: '為 1 對 5的教學課程，包含課前熱身，帶領學員器材操作指導。',
         time: '1.5小時',
         img: require('../assets/imgs/cardImg2.jpg'),
       },
@@ -47,8 +47,7 @@ export default new Vuex.Store({
         name: '團體教練課 10人',
         originalPrice: 800,
         specialOffer: 700,
-        content:
-          '此課程具有高強度低衝擊的運動特性，透過階梯踏板不同的變換使用可鍛鍊到全身，加上適當的音樂節奏、踏板高度的不同而有其不同的運動強度。除了訓練我們的心肺功能，同時也可以強化肌力。',
+        content: '為 1 對 10的教學課程，給予學員相關技術指導，運動心態的建立與調整，讓我們慢慢愛上運動。',
         time: '1.5小時',
         img: require('../assets/imgs/cardImg3.jpg'),
       },

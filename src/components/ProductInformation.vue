@@ -49,7 +49,8 @@
         <p>1. 購課後我們將於 1~3 個工作天跟您聯繫，若有任何問題也歡迎撥打 02-3456-7890。</p>
         <p>2. 我們的教練都有經過嚴格篩選，並且教育不得強迫推銷課程。</p>
         <p>3. 上課時，記得自備水壺跟毛巾，並著裝適合運動的服裝、鞋子。</p>
-        <p>4. 疫情期間入館內皆須量體溫，我們也會頻繁實施館內消毒清潔。</p>
+        <p>4. 館內工作人員，均已打滿三劑疫苗，教練授課期間也會全程戴口罩。</p>
+        <p>5. 疫情期間入館內皆須量體溫，我們也會頻繁實施館內消毒清潔。</p>
       </div>
     </div>
   </div>
@@ -159,10 +160,12 @@ export default {
 }
 .product-price {
   padding: 1.2rem 0 0.5rem 0;
+  font-family: anton;
 }
 .product-price .special {
   font-size: 1.8rem;
   padding-right: 0.5rem;
+  color: rgba(201, 25, 25, 0.873);
 }
 .product-price .basic {
   font-size: 1rem;
