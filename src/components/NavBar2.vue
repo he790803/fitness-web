@@ -164,7 +164,7 @@ export default {
   opacity: 1;
 }
 .shop-cart-hint .title {
-  background-color: #e5ad3e;
+  background-color: #c39173;
   display: flex;
   align-items: center;
   color: #000;
