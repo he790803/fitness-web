@@ -75,10 +75,6 @@ const routes = [
           shop: true,
           page: 'shop',
         },
-        beforeEnter(to, from, next) {
-          document.body.scrollTop = 0;
-          next();
-        },
       },
     ],
   },
@@ -179,6 +175,9 @@ const router = new VueRouter({
   scrollBehavior() {
     return { x: 0, y: 0, behavior: 'smooth' };
   },
+});
+router.afterEach((to, from) => {
+  document.body.scrollTop = 0;
 });
 
 export default router;
