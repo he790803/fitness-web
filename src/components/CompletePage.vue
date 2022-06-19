@@ -52,4 +52,12 @@ export default {
   margin-top: 2rem;
   margin-bottom: 4.1rem;
 }
+@media screen and (max-width: 780px) {
+  .shoppingCartInformation {
+    height: 100%;
+  }
+  .content {
+    margin-bottom: 5.3rem;
+  }
+}
 </style>
