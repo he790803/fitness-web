@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer-text">
-      <p>Copyright &copy 2022 Push yourself Fitness All Rights Reserved.|</p>
+      <p>Copyright &copy 2022 Minus C Fitness All Rights Reserved.|</p>
       <p>僅個人學習，無任何商業用途</p>
     </div>
   </div>
@@ -32,6 +32,11 @@ export default {
 @media screen and (max-width: 830px) {
   .footer-text {
     flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .footer-text p {
+    width: 300px;
+    text-align: center;
   }
 }
 </style>

@@ -2,10 +2,8 @@
   <div class="navBar2">
     <div class="logo" @click="selected = null">
       <div class="home-link">
-        <router-link to="/">
-          <p>Minus C</p>
-          <p>Fitness</p>
-        </router-link>
+        <p>Minus C</p>
+        <p>Fitness</p>
       </div>
 
       <nav :class="{ active: isActive }">
@@ -155,13 +153,15 @@ export default {
   height: 100px;
   position: absolute;
   z-index: 50;
-  right: 1rem;
+  right: -25rem;
   top: -4rem;
   opacity: 0;
-  transition: 0.5s opacity linear;
+  transition: 0.5s all ease-in;
 }
 .shop-cart-hint.active {
   opacity: 1;
+  right: -2rem;
+  top: -4rem;
 }
 .shop-cart-hint .title {
   background-color: #c39173;
@@ -228,6 +228,7 @@ export default {
 .logo {
   position: relative;
   display: flex;
+  cursor: default;
   // flex-direction: column;
   justify-content: center;
   // align-items: center;

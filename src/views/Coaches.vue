@@ -191,7 +191,7 @@ export default {
     font-size: 1rem;
   }
   .coaches li .content {
-    height: 300px;
+    height: auto;
     border-radius: 0px;
   }
 }
