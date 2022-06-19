@@ -147,6 +147,9 @@ export default {
   box-sizing: border-box;
   list-style: none;
 }
+body {
+  overflow-x: hidden !important;
+}
 #app {
   // background: #fffbfa;
   background-color: #eee;

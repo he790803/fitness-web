@@ -128,7 +128,7 @@ export default {
     this.aboutImgLoading.src = require('../assets/imgs/shop-banner-1.jpeg');
     this.aboutImgLoading.addEventListener('load', () => {
       this.$store.commit('LOADING', false);
-      document.body.style.overflow = 'visible';
+      document.body.style.overflowY = 'visible';
       this.action = true;
     });
     // setTimeout(() => {
