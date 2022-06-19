@@ -75,6 +75,10 @@ const routes = [
           shop: true,
           page: 'shop',
         },
+        beforeEnter(to, from, next) {
+          document.body.scrollTop = 0;
+          next();
+        },
       },
     ],
   },
