@@ -147,7 +147,7 @@ export default {
 }
 .product-img {
   width: 48%;
-  max-height: 450px;
+  // max-height: 450px;
   padding-right: 2%;
   // background: #aed;
 }
