@@ -19,4 +19,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.shop {
+  min-height: 100vh;
+}
+</style>
