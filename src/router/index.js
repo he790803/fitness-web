@@ -75,10 +75,10 @@ const routes = [
           shop: true,
           page: 'shop',
         },
-        beforeEnter(to, from, next) {
-          document.body.scrollTop = 0;
-          next();
-        },
+        // beforeEnter(to, from, next) {
+        //   document.body.scrollTop = 0;
+        //   next();
+        // },
       },
     ],
   },
@@ -171,7 +171,6 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   // },
 ];
-
 const router = new VueRouter({
   // mode: 'history',
   mode: 'hash',

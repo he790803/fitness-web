@@ -72,6 +72,7 @@ export default {
     };
   },
   mounted() {
+    document.body.scrollTop = 0;
     setTimeout(() => {
       this.$store.commit('LOADING', false);
     }, 1500);
