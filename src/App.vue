@@ -151,6 +151,7 @@ export default {
 html,
 body {
   overflow-x: hidden !important;
+  scroll-behavior: smooth;
 }
 body {
   height: 100vh;
