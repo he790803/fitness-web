@@ -110,7 +110,7 @@ export default {
         }
         this.$store.commit('SHOPPING_CART_HINT', true);
 
-        document.body.scrollTo(0, 0);
+        document.body.scrollTop = 0;
 
         setTimeout(() => {
           this.$store.commit('SHOPPING_CART_HINT', false);
