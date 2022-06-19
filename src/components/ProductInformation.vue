@@ -109,6 +109,9 @@ export default {
           console.log('無重複');
         }
         this.$store.commit('SHOPPING_CART_HINT', true);
+        setTimeout(function () {
+          window.scrollTo(0, 0);
+        }, 0);
         setTimeout(() => {
           this.$store.commit('SHOPPING_CART_HINT', false);
         }, 3000);
