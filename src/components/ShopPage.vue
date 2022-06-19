@@ -91,7 +91,7 @@ export default {
     this.shopImgLoading.src = require('../assets/imgs/shop-banner-1.jpeg');
     this.shopImgLoading.addEventListener('load', () => {
       this.$store.commit('LOADING', false);
-      document.body.style.overflow = 'visible';
+      document.body.style.overflowY = 'visible';
     });
 
     console.log(this.$refs.imgListC[0].style.backgroundImage);
