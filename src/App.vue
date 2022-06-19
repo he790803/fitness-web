@@ -147,6 +147,7 @@ export default {
   box-sizing: border-box;
   list-style: none;
 }
+html,
 body {
   overflow-x: hidden !important;
 }
