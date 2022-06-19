@@ -99,6 +99,7 @@ export default {
       // }
       if (window.pageYOffset + this.$refs.img1.clientHeight >= this.$refs.img1.offsetTop) {
         gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
+        console.log(222);
       }
       if (window.pageYOffset + this.$refs.img2.clientHeight >= this.$refs.img2.offsetTop) {
         gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });

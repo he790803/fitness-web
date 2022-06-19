@@ -26,8 +26,9 @@ export default {
 <style scoped lang="scss">
 .shoppingCartInformation {
   max-width: 1180px;
-  margin: 2rem auto;
+  margin: 0rem auto;
   padding: 0 2rem;
+  height: calc(100vh - 385px);
 }
 .order-group {
   display: flex;
