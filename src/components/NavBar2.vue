@@ -2,13 +2,15 @@
   <div class="navBar2">
     <div class="logo" @click="selected = null">
       <div class="home-link">
-        <p>Minus C</p>
-        <p>Fitness</p>
+        <router-link to="/" @click.native="disableNavHandler()">
+          <p>Minus C</p>
+          <p>Fitness</p>
+        </router-link>
       </div>
 
       <nav :class="{ active: isActive }">
         <ul>
-          <li v-for="(item, index) of navList" :key="index" @click="selectedHandler(index)">
+          <li v-for="(item, index) of navList" :key="index" @click="disableNavHandler()">
             <router-link :to="item.link" :class="{ highlight: item.title === page }">
               <font-awesome-icon :icon="item.icon" />
               {{ item.title }}
@@ -53,8 +55,8 @@
         </li>
       </ul>
     </nav> -->
-    <div class="shop-car" @click="selectedHandler(0)">
-      <router-link to="/shopping-cart">
+    <div class="shop-car">
+      <router-link to="/shopping-cart" class="shop-car-icon">
         <font-awesome-icon icon="fa-solid fa-shopping-cart" />
         <span>{{ $store.state.shoppingCart.length }}</span>
       </router-link>
@@ -63,7 +65,10 @@
           <font-awesome-icon icon="fa-solid fa-circle-info" />
           <p>Minus C - 訊息通知</p>
         </div>
-        <div class="content">商品已加入購物車</div>
+        <div class="content">
+          <p>商品已加入購物車</p>
+          <router-link to="/shopping-cart" @click.native="shoppingCartLinkHandler()"> 查看購物車 </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -122,9 +127,11 @@ export default {
       this.play = !this.play;
       this.$emit('control', this.play);
     },
-    selectedHandler(index) {
-      this.selected = index;
+    disableNavHandler() {
       this.isActive = false;
+    },
+    shoppingCartLinkHandler() {
+      this.$store.commit('SHOPPING_CART_HINT', false);
     },
   },
   watch: {
@@ -160,7 +167,7 @@ export default {
 }
 .shop-cart-hint.active {
   opacity: 1;
-  right: -2rem;
+  right: 0rem;
   top: -4rem;
 }
 .shop-cart-hint .title {
@@ -179,9 +186,27 @@ export default {
   background-color: rgba(238, 238, 238, 0.697);
   height: 100%;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.shop-cart-hint .content p {
   font-size: 1.2rem;
   font-weight: 600;
   color: #000;
+  height: 50%;
+}
+.shop-cart-hint .content a {
+  display: block;
+  background: #c39173;
+  width: 120px;
+  height: 35px;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  align-self: flex-end;
 }
 .navBar2 {
   background-color: #dac9a6;
@@ -365,7 +390,7 @@ nav ul li a {
 .shop-car {
   position: relative;
 }
-.shop-car a {
+.shop-car .shop-car-icon {
   position: absolute;
   // position: relative;
   top: -6.5rem;
