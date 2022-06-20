@@ -14,7 +14,11 @@
         <img src="@/assets/imgs/about-6.jpeg" alt="" />
       </div>
       <div class="about-txt">
-        <h1>Minus C - 減去您的卡路里</h1>
+        <!-- <h1>Minus C - 減去您的卡路里</h1> -->
+        <div class="title">
+          <h1>Minus C</h1>
+          <h1>- 減去您的卡路里</h1>
+        </div>
         <p>
           健身不單單只是追求身體外在體態的表現，我們認為更重要的是釋放內在的壓力，戰勝自我的愉悅。
           <br />
@@ -97,11 +101,11 @@ export default {
       // if (window.scrollY >= 1030) {
       //   gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       // }
-      if (window.pageYOffset + this.$refs.img1.clientHeight >= this.$refs.img1.offsetTop) {
+      if (window.pageYOffset + this.$refs.img1.clientHeight + 330 >= this.$refs.img1.offsetTop) {
         gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
         console.log(222);
       }
-      if (window.pageYOffset + this.$refs.img2.clientHeight >= this.$refs.img2.offsetTop) {
+      if (window.pageYOffset + this.$refs.img2.clientHeight + 300 >= this.$refs.img2.offsetTop) {
         gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       }
       // console.log(window.scrollY);
@@ -218,6 +222,11 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.about-txt .title {
+  display: flex;
+  align-items: center;
+  /* margin-top: 2rem; */
+}
 .about-txt h1 {
   font-size: 2.8rem;
 }
@@ -320,12 +329,22 @@ export default {
   color: #fff;
   margin-right: 1%;
 }
+@media screen and (max-width: 1170px) {
+  .about-txt .title {
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .about-txt p {
     font-size: 1rem;
+    display: block;
   }
 }
 @media screen and (max-width: 830px) {
+  .about-txt .title {
+    margin-top: 2rem;
+  }
   .text > h1 {
     font-size: 2.2rem;
   }
