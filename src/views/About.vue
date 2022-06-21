@@ -17,7 +17,7 @@
         <!-- <h1>Minus C - 減去您的卡路里</h1> -->
         <div class="title">
           <h1>Minus C</h1>
-          <h1>- 減去您的卡路里</h1>
+          <h1>減去您的卡路里</h1>
         </div>
         <p>
           健身不單單只是追求身體外在體態的表現，我們認為更重要的是釋放內在的壓力，戰勝自我的愉悅。
@@ -38,8 +38,8 @@
       </div>
     </div>
     <div class="about-information">
-      <div class="row-1">
-        <div class="row-1-img" ref="img1">
+      <div class="row-1" ref="img1">
+        <div class="row-1-img">
           <img src="@/assets/imgs/about-row-1.jpeg" alt="about information配圖1" />
         </div>
         <div class="row-1-text row-text">
@@ -47,8 +47,8 @@
           <p>{{ studentNumber }}位</p>
         </div>
       </div>
-      <div class="row-2">
-        <div class="row-2-img" ref="img2">
+      <div class="row-2" ref="img2">
+        <div class="row-2-img">
           <img src="@/assets/imgs/about-row-2.jpeg" alt="about information配圖2" />
         </div>
         <div class="row-2-text row-text">
@@ -88,6 +88,10 @@ export default {
       studentTweenedNumber: 0,
       bodyTweenedNumber: 0,
       aboutImgLoading: null,
+      slideInAt1: 0,
+      slideInAt2: 0,
+      image1Bottom: 0,
+      image2Bottom: 0,
     };
   },
   created() {
@@ -101,13 +105,19 @@ export default {
       // if (window.scrollY >= 1030) {
       //   gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       // }
-      if (window.pageYOffset + this.$refs.img1.clientHeight + 330 >= this.$refs.img1.offsetTop) {
+      // 取得圖片1/2高度的定位點（卷軸垂直位移量＋視窗高度）- 1/2圖片高度
+      this.slideInAt1 = window.scrollY + window.innerHeight - this.$refs.img1.clientHeight;
+      this.slideInAt2 = window.scrollY + window.innerHeight - this.$refs.img2.clientHeight;
+      console.log('slideInAt1:' + this.slideInAt1, 'offsetTop:' + this.$refs.img1.offsetTop);
+
+      if (this.slideInAt1 > this.$refs.img1.offsetTop) {
         gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
-        console.log(222);
       }
-      if (window.pageYOffset + this.$refs.img2.clientHeight + 300 >= this.$refs.img2.offsetTop) {
+      if (this.slideInAt2 > this.$refs.img2.offsetTop) {
+        // if (window.pageYOffset + this.$refs.img2.clientHeight + 300 >= this.$refs.img2.offsetTop) {
         gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       }
+      console.log(this.$refs.img1.offsetTop, window.pageYOffset);
       // console.log(window.scrollY);
       // console.log(`IMG:${this.$refs.img2.offsetTop}`);
       // console.log(`WINDOW:${window.pageYOffset}`);
@@ -227,6 +237,9 @@ export default {
   align-items: center;
   /* margin-top: 2rem; */
 }
+.about-txt h1:first-child {
+  margin-right: 2rem;
+}
 .about-txt h1 {
   font-size: 2.8rem;
 }
@@ -332,6 +345,9 @@ export default {
 @media screen and (max-width: 1170px) {
   .about-txt .title {
     flex-direction: column;
+  }
+  .about-txt h1:first-child {
+    margin-right: 0rem;
   }
 }
 
