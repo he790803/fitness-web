@@ -28,7 +28,7 @@ export default {
   max-width: 1180px;
   margin: 0rem auto;
   padding: 0 2rem;
-  height: calc(100vh - 385px);
+  min-height: calc(100vh - 385px);
 }
 .order-group {
   display: flex;
