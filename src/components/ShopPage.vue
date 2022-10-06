@@ -16,12 +16,6 @@
       </div>
     </div>
 
-    <!-- <div class="banner">
-      <div class="title">
-        <p>運動課程</p>
-      </div>
-    </div> -->
-
     <div class="course-list">
       <button @click="filterCourseHandler('all')" :class="{ selected: courseType === 'all' }">所有課程</button>
       <button @click="filterCourseHandler('experience')" :class="{ selected: courseType === 'experience' }">
@@ -55,9 +49,6 @@
         </router-link>
       </div>
     </div>
-    <!-- <div class="shopCar">
-      <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-    </div> -->
   </div>
 </template>
 
@@ -83,10 +74,7 @@ export default {
 
   mounted() {
     document.body.style.overflow = 'hidden';
-    // setTimeout(() => {
-    //   this.$store.commit('LOADING', false);
-    //   document.body.style.overflow = 'visible';
-    // }, 1500);
+
     this.shopImgLoading = new Image();
     this.shopImgLoading.src = require('../assets/imgs/shop-banner-1.jpeg');
     this.shopImgLoading.addEventListener('load', () => {
@@ -94,7 +82,7 @@ export default {
       document.body.style.overflowY = 'visible';
     });
 
-    console.log(this.$refs.imgListC[0].style.backgroundImage);
+    // console.log(this.$refs.imgListC[0].style.backgroundImage);
     setInterval(() => {
       this.preActive = this.active;
       this.active = (this.active + 1 + this.total) % this.total;
@@ -108,9 +96,11 @@ export default {
       this.isScroll = window.scrollY > 0 ? true : false;
       this.isShow = window.scrollY > 0 ? false : true;
     },
+    // 改變商品類別
     filterCourseHandler(val) {
       this.courseType = val;
     },
+    // 動態管理圖片(css)
     imgListA(n) {
       return {
         backgroundImage: `url(${require('../assets/imgs/shop-banner-' + n + '.jpeg')})`,
@@ -121,6 +111,7 @@ export default {
   },
 
   computed: {
+    // 當類別(資料)改變，畫面改變
     filterCourse() {
       if (this.courseType === 'all') {
         return this.course;
@@ -148,12 +139,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.shopPage {
-  // max-width: 1480px;
-  // margin: auto;
-  // display: flex;
-  // flex-direction: column;
-}
 .banner {
   position: relative;
   height: calc(100vh - 120px);
@@ -217,33 +202,6 @@ export default {
   align-items: flex-end;
   padding-bottom: 3rem;
 }
-// 舊版
-// .banner {
-//   // min-width: 100vw;
-//   // height: 450px;
-//   height: calc(100vh - 160px);
-//   // background-image: url('../assets/imgs/banner1.jpg');
-//   background-image: url('https://hexschool-api.s3.us-west-2.amazonaws.com/custom/gpNODmnfwGZCON1f1W7dOYALSisqOCi9GprW6cWJ2iYLGrBC2oKN73ckLLbC37P9IPJ4F7SlqKaEO06zhq2Hph1ZdZfpJSeQvn7EdOKch2Il2xyQH6WcrtvrhqXTEioR.jpg');
-//   background-size: 100% 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// .title {
-//   background-color: rgba(0, 0, 0, 0.4);
-//   padding: 100px 25%;
-// }
-// .title p {
-//   // text-align: center;
-//   color: #ddd;
-//   // line-height: 450px;
-//   font-size: 2.2rem;
-// }
-// .banner img {
-//   height: 100%;
-//   width: 100%;
-//   filter: opacity(0.9);
-// }
 
 .course-list {
   display: flex;
@@ -280,8 +238,6 @@ export default {
   margin: auto;
 }
 .card {
-  // width: 300px;
-  // height: 100%;
   margin: 20px 20px;
   border: 2px solid #ccc;
   border-radius: 1.25rem;

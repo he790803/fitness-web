@@ -49,20 +49,6 @@ export default {
     NavBar2,
   },
   created() {
-    // if (this.$router.path !== '/') {
-    //   this.$router.replace('/');
-    // }
-    // this.$router.push('/').catch((err) => {
-    //   // Ignore the vuex err regarding  navigating to the page they are already on.
-    //   if (
-    //     err.name !== 'NavigationDuplicated' &&
-    //     !err.message.includes('Avoided redundant navigation to current location')
-    //   ) {
-    //     // But print any other errors to the console
-    //     logError(err);
-    //   }
-    // });
-    // 把已知錯誤先catch起來
     window.addEventListener('load', () => {
       this.$store.dispatch('READ_SHOPPING_CART');
       this.$store.dispatch('READ_LIST');

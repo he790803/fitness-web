@@ -77,6 +77,7 @@
           @change="check('recipient')"
           @blur="check('recipient')"
         />
+        <!-- @blur元件失焦觸發事件  -->
         <span v-if="errors.nameError">{{ nameErrorMessage }}</span>
       </div>
       <div class="input-item">
@@ -207,109 +208,6 @@ export default {
       },
       deep: true,
     },
-    // 'customer.name': {
-    //   handler: function (newValue) {
-    //     if (!newValue) {
-    //       this.errors.nameError = true;
-    //       this.nameErrorMessage = '收件人不得為空!';
-    //     } else {
-    //       this.errors.nameError = false;
-    //       this.nameErrorMessage = '';
-    //     }
-    //   },
-    // },
-    // 'customer.address': {
-    //   handler: function (newValue) {
-    //     if (!newValue) {
-    //       this.errors.addressError = true;
-    //       this.addressErrorMessage = '收件地址不得為空!';
-    //     } else {
-    //       this.errors.addressError = false;
-    //       this.addressErrorMessage = '';
-    //     }
-    //   },
-    // },
-    // 'customer.payMethod': {
-    //   handler: function (newValue) {
-    //     if (!newValue) {
-    //       this.errors.payMethodError = true;
-    //       this.payMethodErrorMessage = '請選擇付款方式!';
-    //     } else {
-    //       this.errors.payMethodError = false;
-    //       this.payMethodErrorMessage = '';
-    //     }
-    //   },
-    // },
-    // 'customer.Email': {
-    //   handler: function (newValue) {
-    //     let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    //     if (!regex.test(newValue)) {
-    //       this.errors.EmailError = true;
-    //       this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
-    //     } else {
-    //       this.errors.EmailError = false;
-    //       this.EmailErrorMessage = '';
-    //     }
-    //   },
-    // },
-    // 'customer.cellphone': {
-    //   handler: function (newValue) {
-    //     let mobileReg = /^(09)[0-9]{8}$/;
-    //     if (!mobileReg.test(newValue)) {
-    //       this.errors.cellphoneError = true;
-    //       this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
-    //     } else {
-    //       this.errors.cellphoneError = false;
-    //       this.cellphoneErrorMessage = '';
-    //     }
-    //   },
-    // },
-    // customer: {
-    //   handler: function () {
-    //     if (!this.customer.name) {
-    //       this.errors.nameError = true;
-    //       this.nameErrorMessage = '收件人不得為空!';
-    //     } else {
-    //       this.errors.nameError = false;
-    //       this.nameErrorMessage = '';
-    //     }
-
-    //     if (!this.customer.address) {
-    //       this.errors.addressError = true;
-    //       this.addressErrorMessage = '收件地址不得為空!';
-    //     } else {
-    //       this.errors.addressError = false;
-    //       this.addressErrorMessage = '';
-    //     }
-
-    //     if (!this.customer.payMethod) {
-    //       this.errors.payMethodError = true;
-    //       this.payMethodErrorMessage = '請選擇付款方式!';
-    //     } else {
-    //       this.errors.payMethodError = false;
-    //       this.payMethodErrorMessage = '';
-    //     }
-
-    //     let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    //     if (!regex.test(this.customer.Email)) {
-    //       this.errors.EmailError = true;
-    //       this.EmailErrorMessage = 'Email格式錯誤! (ex:ooo@xxx.com)';
-    //     } else {
-    //       this.errors.EmailError = false;
-    //       this.EmailErrorMessage = '';
-    //     }
-
-    //     let mobileReg = /^(09)[0-9]{8}$/;
-    //     if (!mobileReg.test(this.customer.cellphone)) {
-    //       this.errors.cellphoneError = true;
-    //       this.cellphoneErrorMessage = '手機格式錯誤! (ex:09xxxxxxxx)';
-    //     } else {
-    //       this.errors.cellphoneError = false;
-    //       this.cellphoneErrorMessage = '';
-    //     }
-    //   },
-    //   deep: true,
-    // },
   },
   methods: {
     submitHandler(item) {
@@ -317,6 +215,7 @@ export default {
       if (!this.$store.state.shoppingCart.length) {
         alert('購無車尚無商品唷!');
       } else {
+        // 將購物車加入購物清單
         this.$store.dispatch('UPDATE_SHOPPING_CART', [this.customer, item, this.listTotalPrice]);
         this.$router.push({ path: 'shopping-cart/checkout' });
       }

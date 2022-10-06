@@ -56,7 +56,7 @@
           <p>{{ bodyNumber }}% 體脂肪</p>
         </div>
         <div class="row-2-img right">
-          <img src="@/assets/imgs/about-row-2-2.jpeg" alt="" />
+          <img src="@/assets/imgs/about-row-2-2.jpeg" alt="about information配圖3" />
         </div>
       </div>
       <div class="row-3">
@@ -64,7 +64,7 @@
           <p>我們本身熱愛運動，希望也能把這份喜愛的心情帶給你，將運動融入自己生活的一部分之中!</p>
         </div>
         <div class="row-3-img">
-          <img src="@/assets/imgs/about-row-3.jpeg" alt="" />
+          <img src="@/assets/imgs/about-row-3.jpeg" alt="about information配圖4" />
         </div>
       </div>
     </div>
@@ -75,6 +75,7 @@
 
 <script>
 import Footer from '@/components/Footer.vue';
+// 數字跳動套件
 import { gsap } from 'gsap/all';
 
 export default {
@@ -99,29 +100,18 @@ export default {
   },
   methods: {
     handleScroll() {
-      // if (window.scrollY >= 700) {
-      //   gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
-      // }
-      // if (window.scrollY >= 1030) {
-      //   gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
-      // }
-      // 取得圖片1/2高度的定位點（卷軸垂直位移量＋視窗高度）- 1/2圖片高度
+      // 取得圖片1/2高度的定位點（卷軸垂直位移量+視窗高度）- 1/2圖片高度
       this.slideInAt1 = window.scrollY + window.innerHeight - this.$refs.img1.clientHeight;
       this.slideInAt2 = window.scrollY + window.innerHeight - this.$refs.img2.clientHeight;
-      console.log('slideInAt1:' + this.slideInAt1, 'offsetTop:' + this.$refs.img1.offsetTop);
+      // console.log('slideInAt1:' + this.slideInAt1, 'offsetTop:' + this.$refs.img1.offsetTop);
 
       if (this.slideInAt1 > this.$refs.img1.offsetTop) {
         gsap.to(this.$data, { duration: 1, studentTweenedNumber: 850 });
       }
       if (this.slideInAt2 > this.$refs.img2.offsetTop) {
-        // if (window.pageYOffset + this.$refs.img2.clientHeight + 300 >= this.$refs.img2.offsetTop) {
         gsap.to(this.$data, { duration: 1, bodyTweenedNumber: 2032.5 });
       }
-      console.log(this.$refs.img1.offsetTop, window.pageYOffset);
-      // console.log(window.scrollY);
-      // console.log(`IMG:${this.$refs.img2.offsetTop}`);
-      // console.log(`WINDOW:${window.pageYOffset}`);
-      // console.log(`${this.$refs.img2.clientHeight}`);
+      // console.log(this.$refs.img1.offsetTop, window.pageYOffset);
     },
   },
   computed: {
@@ -133,6 +123,7 @@ export default {
     },
   },
   beforeDestroy() {
+    // 離開頁面時，移除scrollListener
     window.removeEventListener('scroll', this.handleScroll);
   },
   mounted() {
@@ -142,8 +133,10 @@ export default {
     this.aboutImgLoading = new Image();
     this.aboutImgLoading.src = require('../assets/imgs/shop-banner-1.jpeg');
     this.aboutImgLoading.addEventListener('load', () => {
+      // 圖片載入完成關閉loading效果
       this.$store.commit('LOADING', false);
       document.body.style.overflowY = 'visible';
+      // 載入完成banner文字效果進場
       this.action = true;
     });
     // setTimeout(() => {

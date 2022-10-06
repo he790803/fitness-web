@@ -28,13 +28,6 @@
               <template v-else>
                 <option v-for="option in 10" :value="option" :key="option">{{ option }}</option>
               </template>
-              <!-- <option value="1" selected >1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option> -->
             </select>
           </div>
           <div class="product-btn">
@@ -77,6 +70,7 @@ export default {
     }, 1500);
   },
   computed: {
+    // 拿path帶過來的id與store.state裡的商品資訊做比對
     courseInformation() {
       return this.course.filter((item) => {
         return item.id === this.$route.params.id;
@@ -108,18 +102,16 @@ export default {
           });
           console.log('無重複');
         }
+        // 顯示成功加入購物車訊息
         this.$store.commit('SHOPPING_CART_HINT', true);
         scrollTo(0, 0);
 
+        // 隱藏成功加入購物車訊息
         setTimeout(() => {
           this.$store.commit('SHOPPING_CART_HINT', false);
         }, 3000);
       }
-      console.log('錯誤');
-
-      // item.num = num;
-      // this.$store.dispatch('ADD_ITEM_TO_SHOPPING_CART', item);
-      // console.log(item, num);
+      // console.log('錯誤');
     },
     onSelectedNum(event, item) {
       this.selectedNum = parseInt(event.target.value);

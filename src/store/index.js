@@ -78,19 +78,23 @@ export default new Vuex.Store({
     step2: false,
     hintShow: false,
   },
-  // mutations更新state
+  // 透過mutations更新state
   mutations: {
+    // 加入購物車
     SET_SHOPPING_CART_ITEM(state, shoppingItems) {
       state.shoppingCart = shoppingItems;
     },
+    // 把購物車商品加入購物清單
     SET_SHOPPING_LIST(state, shopping) {
       console.log('SHOPPING_LIST:' + shopping);
       state.shoppingList = shopping;
     },
+    // 清空購物車與完成清單
     COMPLETE(state) {
       state.shoppingCart = [];
       state.shoppingList = [];
     },
+    // 增減產品數量
     PRODUCT_NUM_CONTROL(state, [item, num]) {
       state.shoppingCart.forEach((product) => {
         if (product.name === item.name) {
@@ -99,17 +103,20 @@ export default new Vuex.Store({
         }
       });
     },
+    // Loading
     LOADING(state, val) {
       state.loading = val;
     },
+    // 加入購物車訊息顯示/隱藏
     SHOPPING_CART_HINT(state, val) {
       state.hintShow = val;
     },
   },
   actions: {
-    // READ_ITEM({ commit }) {},
+    // 顯示購物車商品
     READ_SHOPPING_CART({ commit }) {
       // 1. GET (串API撈資料)
+      // 讀取SessionStorage
       const shoppingItems = STORE.load();
       // 2. commit mutation
 
@@ -117,15 +124,18 @@ export default new Vuex.Store({
       // 3. return
       return { shoppingItems };
     },
+
+    // 加入購物車
     ADD_ITEM_TO_SHOPPING_CART({ commit }, { id, name, num, price, totalPrice, img }) {
-      // ADD_ITEM_TO_SHOPPING_CART({ commit }, item) {
       // 1. POST (串API撈資料)
+      // 讀取SessionStorage
       const shoppingItems = STORE.load();
       shoppingItems.push({ id, name, num, price, totalPrice, img });
       // shoppingItems.push(item);
-
+      // 存進SessionStorage
       STORE.save(shoppingItems);
       // 2. commit mutation
+      //存進store.state
       commit('SET_SHOPPING_CART_ITEM', shoppingItems);
       // 3. return
       return {
@@ -136,6 +146,7 @@ export default new Vuex.Store({
         totalPrice,
       };
     },
+
     READ_LIST({ state, commit }) {
       // 1. GET (串API撈資料)
       // const shoppingItems = SHOPPING.load();
@@ -145,16 +156,12 @@ export default new Vuex.Store({
       // 3. return
       return { shoppingItems };
     },
-    // UPDATE_SHOPPING_CART({ commit }, { name, Email, cellphone, address, payMethod, remark }) {
-    UPDATE_SHOPPING_CART({ commit }, item) {
-      // const shopping = SHOPPING.load();
-      // shopping.push({ name, Email, cellphone, address, payMethod, remark });
-      // shopping.push(item);
 
-      // SHOPPING.save(item);
-      console.log('UPDATE_SHOPPING_CART:' + item);
+    UPDATE_SHOPPING_CART({ commit }, item) {
+      // console.log('UPDATE_SHOPPING_CART:' + item);
       commit('SET_SHOPPING_LIST', item);
     },
+
     REMOVE_SHOPPING_CART_ITEM({ commit }, item) {
       const shoppingItems = STORE.load();
       let shoppingCart = shoppingItems.filter((cartItem) => {

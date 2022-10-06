@@ -1,12 +1,6 @@
 <template>
   <div class="homeImage2">
     <div class="video-background">
-      <!-- <img
-        v-if="$store.state.loading"
-        ref="imgRight"
-        src="https://via.placeholder.com/150/9a9998/9a9998"
-        alt="首頁大圖-右"
-      /> -->
       <div class="slogan">
         <p>Sweat is the</p>
         <p>lubricant of success.</p>
@@ -14,19 +8,6 @@
       <img v-if="$store.state.loading" src="https://via.placeholder.com/150/9a9998/9a9998" alt="" />
       <video v-else ref="imgRight" playsinline src="../assets/imgs/homevideo-1.mp4" muted loop autoplay></video>
     </div>
-    <!-- <div class="img-group">
-      <div class="img-left">
-        <img ref="imgLeft" src="/images/homeImg3.jpg" alt="首頁大圖-左" />
-      </div>
-
-      <div class="img-right">
-        <div class="slogan">
-          <p>Sweat is the</p>
-          <p>lubricant of success.</p>
-        </div>
-        <img ref="imgRight" src="https://via.placeholder.com/150/9a9998/9a9998" alt="首頁大圖-右" />
-      </div>
-    </div> -->
   </div>
 </template>
 
